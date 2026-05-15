@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "PowerShell(git init)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(powershell -Command \"Expand-Archive -Path 'C:\\\\Users\\\\erike\\\\Downloads\\\\Mi-Primera-Casilla.zip' -DestinationPath 'C:\\\\Users\\\\erike\\\\Downloads\\\\Mi-Primera-Casilla_extracted' -Force\")",
+      "Bash(git checkout *)",
+      "Bash(git stash *)",
+      "Bash(git pull *)",
+      "Bash(git push *)"
+    ]
+  }
+}

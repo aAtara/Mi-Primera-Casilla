@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es-MX">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,15 +34,31 @@
     }
 
     @keyframes iconoPop {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.4) rotate(10deg); }
-      100% { transform: scale(1) rotate(0deg); }
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.4) rotate(10deg);
+      }
+
+      100% {
+        transform: scale(1) rotate(0deg);
+      }
     }
 
     @keyframes checkPop {
-      0% { transform: scale(0) rotate(-90deg); }
-      60% { transform: scale(1.3) rotate(10deg); }
-      100% { transform: scale(1) rotate(0deg); }
+      0% {
+        transform: scale(0) rotate(-90deg);
+      }
+
+      60% {
+        transform: scale(1.3) rotate(10deg);
+      }
+
+      100% {
+        transform: scale(1) rotate(0deg);
+      }
     }
 
     /* Efecto shimmer al completar todo */
@@ -52,8 +69,13 @@
     }
 
     @keyframes shimmer {
-      0% { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
+      0% {
+        background-position: 200% 0;
+      }
+
+      100% {
+        background-position: -200% 0;
+      }
     }
 
     /* === Dato curioso animado === */
@@ -74,9 +96,22 @@
     }
 
     @keyframes foquito {
-      0%, 100% { transform: rotate(0deg) scale(1); filter: brightness(1); }
-      25% { transform: rotate(-10deg) scale(1.1); filter: brightness(1.3); }
-      50% { transform: rotate(5deg) scale(1.05); filter: brightness(1.1); }
+
+      0%,
+      100% {
+        transform: rotate(0deg) scale(1);
+        filter: brightness(1);
+      }
+
+      25% {
+        transform: rotate(-10deg) scale(1.1);
+        filter: brightness(1.3);
+      }
+
+      50% {
+        transform: rotate(5deg) scale(1.05);
+        filter: brightness(1.1);
+      }
     }
 
     /* === Mapa simulado mejorado === */
@@ -105,12 +140,19 @@
     .mapa-simulado__pin {
       font-size: 3rem;
       animation: pinFloat 2s ease-in-out infinite;
-      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
     }
 
     @keyframes pinFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
     }
 
     .mapa-simulado--encontrado .mapa-simulado__pin {
@@ -118,9 +160,20 @@
     }
 
     @keyframes pinDrop {
-      0% { transform: translateY(-40px) scale(0.5); opacity: 0; }
-      60% { transform: translateY(5px) scale(1.1); opacity: 1; }
-      100% { transform: translateY(0) scale(1); opacity: 1; }
+      0% {
+        transform: translateY(-40px) scale(0.5);
+        opacity: 0;
+      }
+
+      60% {
+        transform: translateY(5px) scale(1.1);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
     }
 
     .mapa-simulado__texto {
@@ -161,8 +214,17 @@
     }
 
     @keyframes ondas {
-      0% { width: 30px; height: 30px; opacity: 0.6; }
-      100% { width: 120px; height: 120px; opacity: 0; }
+      0% {
+        width: 30px;
+        height: 30px;
+        opacity: 0.6;
+      }
+
+      100% {
+        width: 120px;
+        height: 120px;
+        opacity: 0;
+      }
     }
 
     .seccion-input-mapa {
@@ -171,8 +233,15 @@
       margin-bottom: 1rem;
     }
 
-    .seccion-input-mapa .campo__input { flex: 1; }
-    .seccion-input-mapa .btn { flex-shrink: 0; padding: 0.75rem 1.2rem; font-size: 0.9rem; }
+    .seccion-input-mapa .campo__input {
+      flex: 1;
+    }
+
+    .seccion-input-mapa .btn {
+      flex-shrink: 0;
+      padding: 0.75rem 1.2rem;
+      font-size: 0.9rem;
+    }
 
     /* === Quiz mejorado === */
     .quiz-contador {
@@ -199,17 +268,41 @@
     }
 
     @keyframes respuestaCorrecta {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+
+      100% {
+        transform: scale(1);
+      }
     }
 
     @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      20% { transform: translateX(-8px); }
-      40% { transform: translateX(8px); }
-      60% { transform: translateX(-5px); }
-      80% { transform: translateX(5px); }
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      20% {
+        transform: translateX(-8px);
+      }
+
+      40% {
+        transform: translateX(8px);
+      }
+
+      60% {
+        transform: translateX(-5px);
+      }
+
+      80% {
+        transform: translateX(5px);
+      }
     }
 
     .quiz__feedback {
@@ -217,8 +310,15 @@
     }
 
     @keyframes slideUp {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* === Secciones con scroll reveal === */
@@ -250,15 +350,23 @@
     }
 
     @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
+      from {
+        width: 0;
+      }
+
+      to {
+        width: 100%;
+      }
     }
 
     @keyframes blink {
-      50% { border-color: transparent; }
+      50% {
+        border-color: transparent;
+      }
     }
   </style>
 </head>
+
 <body>
   <div id="barra-progreso"></div>
 
@@ -266,8 +374,10 @@
   <div class="acc-panel" role="dialog" aria-label="Panel de accesibilidad">
     <div class="acc-panel__titulo">Accesibilidad</div>
     <button class="acc-panel__opcion" data-acc="voz"><span class="acc-panel__icono">🔊</span> Narración por voz</button>
-    <button class="acc-panel__opcion" data-acc="lectura_facil"><span class="acc-panel__icono">📖</span> Lectura fácil</button>
-    <button class="acc-panel__opcion" data-acc="alto_contraste"><span class="acc-panel__icono">🌗</span> Alto contraste</button>
+    <button class="acc-panel__opcion" data-acc="lectura_facil"><span class="acc-panel__icono">📖</span> Lectura
+      fácil</button>
+    <button class="acc-panel__opcion" data-acc="alto_contraste"><span class="acc-panel__icono">🌗</span> Alto
+      contraste</button>
   </div>
   <div class="voz-controles" aria-label="Controles de narración">
     <button class="voz-controles__btn voz-btn-pausar" aria-label="Pausar" title="Pausar">⏸️</button>
@@ -280,28 +390,28 @@
       <section class="text-center mb-2">
         <h1>Antes de votar</h1>
         <p data-texto-normal="Todo lo que necesitas saber antes del gran día"
-           data-texto-facil="Aquí te decimos qué llevar y cómo encontrar tu casilla.">Todo lo que necesitas saber antes del gran día</p>
+          data-texto-facil="Aquí te decimos qué llevar y cómo encontrar tu casilla.">Todo lo que necesitas saber antes
+          del gran día</p>
       </section>
 
       <!-- A) Checklist -->
       <section class="mb-3 seccion-animada" id="seccion-checklist">
-        <h2 class="mb-1">¿Qué necesitas llevar?</h2>
+        <h2 class="mb-1">Lo que debes llevar:</h2>
         <ul class="checklist" id="checklist" aria-label="Lista de requisitos para votar"></ul>
       </section>
 
       <!-- Dato curioso -->
       <div class="tarjeta tarjeta--destacada mb-3 dato-curioso-card seccion-animada" id="dato-curioso">
         <strong><span class="foco">💡</span> Dato curioso</strong>
-        <p class="mt-1" id="dato-curioso-texto"
-           data-texto-normal=""
-           data-texto-facil=""></p>
+        <p class="mt-1" id="dato-curioso-texto" data-texto-normal="" data-texto-facil=""></p>
       </div>
 
       <!-- B) Mapa simulado -->
       <section class="mb-3 seccion-animada" id="seccion-mapa">
         <h2 class="mb-1">¿Cómo encuentras tu casilla?</h2>
         <div class="seccion-input-mapa">
-          <input class="campo__input" type="text" id="input-seccion-mapa" placeholder="Tu sección electoral" inputmode="numeric" maxlength="6">
+          <input class="campo__input" type="text" id="input-seccion-mapa" placeholder="Tu sección electoral"
+            inputmode="numeric" maxlength="6">
           <button class="btn btn--secundario" id="btn-buscar-casilla">Buscar</button>
         </div>
         <div class="mapa-simulado" id="mapa-simulado">
@@ -321,8 +431,8 @@
         <div class="quiz" id="quiz-contenedor"></div>
       </section>
 
-      <button class="btn btn--primario btn--grande mt-2" id="btn-siguiente"
-              onclick="irAPantalla('pantalla3.html')">
+      <button class="btn btn--primario btn--grande mt-2" id="btn-siguiente" onclick="irAPantalla('pantalla3.html')"
+        disabled title="Completa el quiz para continuar">
         Siguiente: El gran día →
       </button>
     </div>
@@ -339,19 +449,19 @@
     }
 
     // Scroll reveal observer
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('seccion-animada--visible');
         }
       });
     }, { threshold: 0.15 });
 
-    document.querySelectorAll('.seccion-animada').forEach(function(el) {
+    document.querySelectorAll('.seccion-animada').forEach(function (el) {
       observer.observe(el);
     });
 
-    cargarContenido().then(function(data) {
+    cargarContenido().then(function (data) {
       var p2 = data.pantallas.p2;
 
       // Checklist con animación escalonada
@@ -359,7 +469,7 @@
       var totalItems = p2.checklist.length;
       var marcados = 0;
 
-      p2.checklist.forEach(function(item, i) {
+      p2.checklist.forEach(function (item, i) {
         var li = document.createElement('li');
         li.className = 'checklist__item';
         li.setAttribute('tabindex', '0');
@@ -368,12 +478,12 @@
         li.innerHTML =
           '<span class="checklist__icono">' + item.icono + '</span>' +
           '<div class="checklist__texto">' +
-            '<strong data-texto-normal="' + item.texto + '" data-texto-facil="' + item.texto + '">' + item.texto + '</strong>' +
-            '<small data-texto-normal="' + item.detalle + '" data-texto-facil="' + item.detalle + '">' + item.detalle + '</small>' +
+          '<strong data-texto-normal="' + item.texto + '" data-texto-facil="' + item.texto + '">' + item.texto + '</strong>' +
+          '<small data-texto-normal="' + item.detalle + '" data-texto-facil="' + item.detalle + '">' + item.detalle + '</small>' +
           '</div>' +
           '<div class="checklist__check" aria-hidden="true">✓</div>';
 
-        li.addEventListener('click', function() {
+        li.addEventListener('click', function () {
           var yaMarcado = li.classList.contains('checklist__item--marcado');
           li.classList.toggle('checklist__item--marcado');
           li.setAttribute('aria-checked', !yaMarcado ? 'true' : 'false');
@@ -384,14 +494,14 @@
             checklistEl.classList.remove('checklist--completo');
           }
         });
-        li.addEventListener('keydown', function(e) {
+        li.addEventListener('keydown', function (e) {
           if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); li.click(); }
         });
 
         checklistEl.appendChild(li);
 
         // Animación escalonada de entrada
-        setTimeout(function() {
+        setTimeout(function () {
           li.classList.add('checklist__item--visible');
         }, 200 * (i + 1));
       });
@@ -408,7 +518,7 @@
       mapaAyuda.setAttribute('data-texto-normal', p2.mapa.texto_ayuda);
       mapaAyuda.setAttribute('data-texto-facil', p2.mapa.texto_ayuda_facil);
 
-      document.getElementById('btn-buscar-casilla').addEventListener('click', function() {
+      document.getElementById('btn-buscar-casilla').addEventListener('click', function () {
         var val = document.getElementById('input-seccion-mapa').value.trim();
         var mapa = document.getElementById('mapa-simulado');
         var mapaTexto = document.querySelector('.mapa-simulado__texto');
@@ -421,54 +531,74 @@
         }
       });
 
+      function tomarAlAzar(arreglo, n) {
+        var copia = arreglo.slice();
+        for (var i = copia.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var temp = copia[i];
+          copia[i] = copia[j];
+          copia[j] = temp;
+        }
+        return copia.slice(0, n);
+      }
+
       // Quiz
       var quizContenedor = document.getElementById('quiz-contenedor');
       var correctas = 0;
       var contestadas = 0;
-      var total = p2.quiz.length;
+      var preguntasSeleccionadas = tomarAlAzar(p2.quiz, 3);
+      var total = preguntasSeleccionadas.length;
       var contadorEl = document.getElementById('quiz-contador');
       contadorEl.textContent = correctas + ' de ' + total + ' correctas';
 
-      p2.quiz.forEach(function(q, qi) {
+      preguntasSeleccionadas.forEach(function (q, qi) {
         var div = document.createElement('div');
         div.className = 'tarjeta mb-1';
 
         var pregHTML = '<p class="quiz__pregunta">' + (qi + 1) + '. ' + q.pregunta + '</p>';
         pregHTML += '<div class="quiz__opciones">';
-        q.opciones.forEach(function(op, oi) {
+        q.opciones.forEach(function (op, oi) {
           pregHTML += '<button class="quiz__opcion" data-quiz="' + qi + '" data-opcion="' + oi + '">' + op + '</button>';
         });
         pregHTML += '</div>';
         pregHTML += '<div class="quiz__feedback" id="quiz-fb-' + qi + '" style="display:none"></div>';
         div.innerHTML = pregHTML;
 
-        div.querySelectorAll('.quiz__opcion').forEach(function(btn) {
-          btn.addEventListener('click', function() {
+        div.querySelectorAll('.quiz__opcion').forEach(function (btn) {
+          btn.addEventListener('click', function () {
             var qIdx = parseInt(btn.getAttribute('data-quiz'));
             var oIdx = parseInt(btn.getAttribute('data-opcion'));
-            var esCorrecta = oIdx === p2.quiz[qIdx].correcta;
+            var esCorrecta = oIdx === preguntasSeleccionadas[qIdx].correcta;
             var feedback = document.getElementById('quiz-fb-' + qIdx);
             var opciones = div.querySelectorAll('.quiz__opcion');
 
-            opciones.forEach(function(b) { b.disabled = true; });
+            opciones.forEach(function (b) { b.disabled = true; });
 
             if (esCorrecta) {
               btn.classList.add('quiz__opcion--correcta');
               feedback.className = 'quiz__feedback quiz__feedback--correcto';
               feedback.textContent = '✅ ¡Correcto! ' + (document.body.classList.contains('lectura-facil')
-                ? p2.quiz[qIdx].explicacion_facil : p2.quiz[qIdx].explicacion);
+                ? preguntasSeleccionadas[qIdx].explicacion_facil
+                : preguntasSeleccionadas[qIdx].explicacion);
               correctas++;
             } else {
               btn.classList.add('quiz__opcion--incorrecta');
               opciones[p2.quiz[qIdx].correcta].classList.add('quiz__opcion--correcta');
               feedback.className = 'quiz__feedback quiz__feedback--incorrecto';
               feedback.textContent = '❌ ' + (document.body.classList.contains('lectura-facil')
-                ? p2.quiz[qIdx].explicacion_facil : p2.quiz[qIdx].explicacion);
+                ? preguntasSeleccionadas[qIdx].explicacion_facil
+                : preguntasSeleccionadas[qIdx].explicacion);
             }
 
             feedback.style.display = 'block';
             contestadas++;
             contadorEl.textContent = correctas + ' de ' + total + ' correctas';
+
+            if (contestadas === total) {
+              var btnSig = document.getElementById('btn-siguiente');
+              btnSig.disabled = false;
+              btnSig.title = '';
+            }
 
             // Guardar score para pantalla 5
             sessionStorage.setItem('quizCorrectas', correctas);
@@ -481,4 +611,5 @@
     });
   </script>
 </body>
+
 </html>

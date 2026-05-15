@@ -48,31 +48,79 @@
         "texto_ayuda_facil": "Busca tu casilla en la página del INE con tu número de sección."
       },
       "quiz": [
-        {
-          "pregunta": "¿Qué pasa si tu credencial del INE está vencida?",
-          "opciones": [
-            "No puedes votar",
-            "Sí puedes votar si la foto es legible",
-            "Debes tramitar una nueva primero"
-          ],
-          "correcta": 1,
-          "explicacion": "El artículo 218 de la LGIPE permite votar con INE vencida siempre que la fotografía y datos sean legibles.",
-          "explicacion_facil": "Sí puedes votar con INE vencida. Solo necesitan ver tu foto."
-        },
-        {
-          "pregunta": "¿A qué hora cierran las casillas?",
-          "opciones": [
-            "4:00 PM",
-            "6:00 PM",
-            "8:00 PM"
-          ],
-          "correcta": 1,
-          "explicacion": "Las casillas abren a las 8:00 AM y cierran a las 6:00 PM, o cuando vote el último ciudadano en fila a esa hora.",
-          "explicacion_facil": "Cierran a las 6 de la tarde. Si estás en la fila a esa hora, sí puedes votar."
-        }
-      ],
-      "boton": "Siguiente: El gran día →",
-      "texto_facil": "Aquí te decimos qué llevar y cómo encontrar tu casilla."
+  {
+    "pregunta": "¿Qué pasa si tu credencial del INE está vencida?",
+    "opciones": [
+      "No puedes votar",
+      "Sí puedes votar si la foto es legible",
+      "Puedes votar solo si pagas una multa en la casilla"
+    ],
+    "correcta": 0,
+    "explicacion": "Para poder ejercer el voto, es un requisito indispensable que la credencial esté vigente y que el ciudadano aparezca en la lista nominal de electores.",
+    "explicacion_facil": "Si tu INE ya venció, no podrás votar. Tienes que renovarla antes de las elecciones."
+  },
+  {
+    "pregunta": "¿A qué hora cierran las casillas?",
+    "opciones": [
+      "4:00 PM",
+      "6:00 PM",
+      "8:00 PM"
+    ],
+    "correcta": 1,
+    "explicacion": "Las casillas abren a las 8:00 AM y cierran a las 6:00 PM, o cuando vote el último ciudadano en fila a esa hora.",
+    "explicacion_facil": "Cierran a las 6 de la tarde. Si estás en la fila a esa hora, sí puedes votar."
+  },
+  {
+    "pregunta": "Cuando llegas a la casilla, ¿cuál es el primer paso del proceso?",
+    "opciones": [
+      "Recibir tu boleta directamente",
+      "Que el funcionario busque tu nombre en la lista nominal",
+      "Marcar tu voto en la mesa",
+      "Meter la boleta en la urna"
+    ],
+    "correcta": 1,
+    "explicacion": "Al llegar, un funcionario de casilla verifica que tu nombre aparezca en la lista nominal antes de entregarte la boleta.",
+    "explicacion_facil": "Primero buscan tu nombre en una lista. Si estás, te dan tu boleta."
+  },
+  {
+    "pregunta": "Si un ciudadano llega a votar pero su casilla no es la que le corresponde, ¿qué debería hacer?",
+    "opciones": [
+      "Votar en esa casilla de todas formas",
+      "Acudir a la casilla especial más cercana o a la que le corresponde según su domicilio",
+      "Quejarse con los medios de comunicación",
+      "No puede votar ese día"
+    ],
+    "correcta": 1,
+    "explicacion": "Cada ciudadano tiene asignada una casilla según su domicilio. Si no es la correcta, puede buscar una casilla especial.",
+    "explicacion_facil": "Ve a tu casilla correcta o busca una casilla especial cercana."
+  },
+  {
+    "pregunta": "¿Qué son las casillas especiales y para quiénes están destinadas?",
+    "opciones": [
+      "Casillas exclusivas para personas con discapacidad",
+      "Casillas habilitadas para ciudadanos que se encuentran fuera de su sección electoral el día de la votación",
+      "Casillas para votantes que perdieron su credencial",
+      "Casillas de uso exclusivo para servidores públicos"
+    ],
+    "correcta": 1,
+    "explicacion": "Las casillas especiales permiten votar a quienes están fuera de su sección el día de la elección, aunque solo para cargos federales.",
+    "explicacion_facil": "Son casillas para personas que no están en su lugar de votación ese día."
+  },
+  {
+    "pregunta": "Si un elector tiene una discapacidad visual o motriz, ¿qué puede hacer?",
+    "opciones": [
+      "No puede ejercer su voto en ese caso",
+      "Un funcionario del INE marca la boleta por él sin consultarle",
+      "Puede ser acompañado por una persona de su confianza para que le asista dentro de la mampara",
+      "Debe solicitar un formulario especial con anticipación al INE"
+    ],
+    "correcta": 2,
+    "explicacion": "La legislación electoral garantiza el derecho al voto asistido, permitiendo que una persona de confianza acompañe al elector dentro de la mampara.",
+    "explicacion_facil": "Puedes llevar a alguien de confianza que te ayude a marcar tu boleta."
+  }
+],
+"boton": "Siguiente: El gran día →",
+"texto_facil": "Aquí te decimos qué llevar y cómo encontrar tu casilla."
     },
     "p3": {
       "titulo": "El gran día",
@@ -161,20 +209,6 @@
           "color": "#E65100",
           "candidato": "Diego Armando Fierro Mata",
           "logo_letra": "S"
-        },
-        {
-          "nombre": "Partido del Mar",
-          "siglas": "PM",
-          "color": "#00838F",
-          "candidato": "Lucía Beatriz Carmona Vela",
-          "logo_letra": "M"
-        },
-        {
-          "nombre": "Partido del Maíz",
-          "siglas": "PZ",
-          "color": "#F9A825",
-          "candidato": "Hugo Emiliano Bravo Solís",
-          "logo_letra": "Z"
         },
         {
           "nombre": "Candidatura Independiente",
