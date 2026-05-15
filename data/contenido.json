@@ -163,6 +163,20 @@
           "logo_letra": "S"
         },
         {
+          "nombre": "Partido del Mar",
+          "siglas": "PM",
+          "color": "#00838F",
+          "candidato": "Lucía Beatriz Carmona Vela",
+          "logo_letra": "M"
+        },
+        {
+          "nombre": "Partido del Maíz",
+          "siglas": "PZ",
+          "color": "#F9A825",
+          "candidato": "Hugo Emiliano Bravo Solís",
+          "logo_letra": "Z"
+        },
+        {
           "nombre": "Candidatura Independiente",
           "siglas": "CI",
           "color": "#4A148C",

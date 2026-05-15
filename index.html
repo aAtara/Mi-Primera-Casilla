@@ -132,13 +132,15 @@
     var errorNombre = document.getElementById('error-nombre');
     var errorSeccion = document.getElementById('error-seccion');
 
-    inputNombre.addEventListener('input', function() {
+    inputNombre.addEventListener('input', function(e) {
+      e.target.value = e.target.value.replace(/[^\p{L} ]/gu, '');
       if (inputNombre.value.trim()) {
         errorNombre.style.display = 'none';
         inputNombre.classList.remove('campo__input--error');
       }
     });
-    inputSeccion.addEventListener('input', function() {
+    inputSeccion.addEventListener('input', function(e) {
+      e.target.value = e.target.value.replace(/[^0-9]/g, '');
       if (inputSeccion.value.trim()) {
         errorSeccion.style.display = 'none';
         inputSeccion.classList.remove('campo__input--error');
