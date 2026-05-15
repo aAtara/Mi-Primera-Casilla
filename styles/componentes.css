@@ -186,6 +186,18 @@
   box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1);
 }
 
+.campo__input--error {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.1);
+}
+
+.campo__error {
+  font-size: 0.82rem;
+  color: var(--color-error);
+  font-weight: 600;
+  animation: fadeIn 0.3s ease;
+}
+
 .campo__input::placeholder {
   color: #aaa;
 }

@@ -97,14 +97,16 @@
       <form class="formulario" id="form-inicio" autocomplete="off">
         <div class="campo">
           <label class="campo__label" for="input-nombre">¿Cómo te llamas?</label>
-          <input class="campo__input" type="text" id="input-nombre" placeholder="Tu nombre" maxlength="50" autofocus>
+          <input class="campo__input" type="text" id="input-nombre" placeholder="Tu nombre" maxlength="50" required autofocus>
           <span class="campo__nota">Solo para personalizar tu experiencia. No se guarda ni se envía.</span>
+          <span class="campo__error" id="error-nombre" style="display:none">Por favor, escribe tu nombre para continuar.</span>
         </div>
 
         <div class="campo">
           <label class="campo__label" for="input-seccion">¿Cuál es tu sección electoral?</label>
-          <input class="campo__input" type="text" id="input-seccion" placeholder="Ej. 1234" maxlength="6" inputmode="numeric" pattern="[0-9]*">
+          <input class="campo__input" type="text" id="input-seccion" placeholder="Ej. 1234" maxlength="6" inputmode="numeric" pattern="[0-9]*" required>
           <span class="campo__nota">Está en la parte trasera de tu INE. Es solo para la simulación.</span>
+          <span class="campo__error" id="error-seccion" style="display:none">Ingresa tu sección electoral para continuar.</span>
         </div>
 
         <button type="submit" class="btn btn--primario btn--grande mt-2" id="btn-comenzar">
@@ -125,10 +127,44 @@
   <script>
     renderBarraProgreso(1, document.getElementById('barra-progreso'));
 
+    var inputNombre = document.getElementById('input-nombre');
+    var inputSeccion = document.getElementById('input-seccion');
+    var errorNombre = document.getElementById('error-nombre');
+    var errorSeccion = document.getElementById('error-seccion');
+
+    inputNombre.addEventListener('input', function() {
+      if (inputNombre.value.trim()) {
+        errorNombre.style.display = 'none';
+        inputNombre.classList.remove('campo__input--error');
+      }
+    });
+    inputSeccion.addEventListener('input', function() {
+      if (inputSeccion.value.trim()) {
+        errorSeccion.style.display = 'none';
+        inputSeccion.classList.remove('campo__input--error');
+      }
+    });
+
     document.getElementById('form-inicio').addEventListener('submit', function(e) {
       e.preventDefault();
-      var nombre = document.getElementById('input-nombre').value.trim() || 'Ciudadano';
-      var seccion = document.getElementById('input-seccion').value.trim();
+      var nombre = inputNombre.value.trim();
+      var seccion = inputSeccion.value.trim();
+      var valido = true;
+
+      if (!nombre) {
+        errorNombre.style.display = 'block';
+        inputNombre.classList.add('campo__input--error');
+        inputNombre.focus();
+        valido = false;
+      }
+      if (!seccion) {
+        errorSeccion.style.display = 'block';
+        inputSeccion.classList.add('campo__input--error');
+        if (valido) inputSeccion.focus();
+        valido = false;
+      }
+      if (!valido) return;
+
       guardarDatos(nombre, seccion);
       irAPantalla('pantalla2.html');
     });
