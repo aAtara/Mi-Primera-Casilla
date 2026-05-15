@@ -18,12 +18,10 @@ function initBoleta(partidos) {
     div.setAttribute('data-index', i);
 
     div.innerHTML =
+      '<strong class="boleta__nombre-partido">' + partido.nombre + '</strong>' +
       '<div class="boleta__logo" style="background:' + partido.color + '">' + partido.logo_letra + '</div>' +
-      '<div class="boleta__info">' +
-        '<strong class="boleta__nombre-partido">' + partido.nombre + '</strong>' +
-        '<span class="boleta__candidato">' + partido.candidato + '</span>' +
-      '</div>' +
-      '<div class="boleta__marca" aria-hidden="true"></div>';
+      '<span class="boleta__candidato">' + partido.candidato + '</span>' +
+      '<div class="boleta__marca-area"><div class="boleta__marca" aria-hidden="true"></div></div>';
 
     div.addEventListener('click', function() {
       seleccionarPartido(i, partidos);
