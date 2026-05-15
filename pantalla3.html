@@ -8,91 +8,244 @@
   <link rel="stylesheet" href="styles/componentes.css">
   <link rel="stylesheet" href="styles/accesibilidad.css">
   <style>
-    .pasos-llegada {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
+    /* === Timeline vertical === */
+    .timeline {
+      position: relative;
+      padding-left: 40px;
     }
 
-    .paso-llegada {
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--color-borde);
+      border-radius: 3px;
+    }
+
+    .timeline__linea-progreso {
+      position: absolute;
+      left: 15px;
+      top: 0;
+      width: 3px;
+      height: 0;
+      background: var(--color-primario);
+      border-radius: 3px;
+      transition: height 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      z-index: 1;
+    }
+
+    .timeline__paso {
+      position: relative;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateX(-30px) scale(0.9);
+      transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .timeline__paso--visible {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+
+    .timeline__dot {
+      position: absolute;
+      left: -33px;
+      top: 0.5rem;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #fff;
+      border: 3px solid var(--color-borde);
       display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      padding: 1rem;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: var(--color-borde);
+      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      z-index: 2;
+    }
+
+    .timeline__paso--visible .timeline__dot {
+      background: var(--color-primario);
+      border-color: var(--color-primario);
+      color: #fff;
+      animation: dotPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes dotPop {
+      0% { transform: scale(0); }
+      60% { transform: scale(1.4); }
+      100% { transform: scale(1); }
+    }
+
+    .timeline__tarjeta {
       background: #fff;
       border: 2px solid var(--color-borde);
       border-radius: var(--radio-borde);
-      opacity: 0;
-      transform: translateX(-20px);
-      transition: all 0.5s ease;
+      padding: 1.25rem;
+      box-shadow: var(--sombra);
+      transition: all 0.3s ease;
     }
 
-    .paso-llegada--visible {
-      opacity: 1;
-      transform: translateX(0);
+    .timeline__paso--visible .timeline__tarjeta {
+      border-color: rgba(139, 0, 0, 0.2);
     }
 
-    .paso-llegada__icono {
-      font-size: 2rem;
-      flex-shrink: 0;
+    .timeline__tarjeta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .timeline__header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline__icono {
+      font-size: 1.8rem;
       width: 50px;
       height: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #f0f5fa;
+      background: linear-gradient(135deg, #f0f5fa 0%, #e3edf7 100%);
       border-radius: 50%;
-    }
-
-    .paso-llegada__contenido {
-      flex: 1;
-    }
-
-    .paso-llegada__titulo {
-      font-weight: 700;
-      font-size: 1rem;
-      margin-bottom: 0.2rem;
-    }
-
-    .paso-llegada__texto {
-      font-size: 0.9rem;
-      color: #555;
-      margin: 0;
-    }
-
-    .paso-llegada__numero {
-      width: 24px;
-      height: 24px;
-      background: var(--color-primario);
-      color: #fff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      font-weight: 700;
       flex-shrink: 0;
     }
 
+    .timeline__paso--visible .timeline__icono {
+      animation: iconoEntrada 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes iconoEntrada {
+      0% { transform: rotate(-180deg) scale(0); }
+      100% { transform: rotate(0deg) scale(1); }
+    }
+
+    .timeline__titulo {
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--color-secundario);
+    }
+
+    .timeline__texto {
+      font-size: 0.9rem;
+      color: #555;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* === Diálogo mejorado === */
     .dialogo-seccion {
-      max-width: 400px;
+      max-width: 420px;
       margin: 0 auto;
+    }
+
+    .dialogo__burbuja {
+      animation: burbujaEntrada 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .dialogo__burbuja--funcionario {
+      animation-name: burbujaIzq;
+    }
+
+    .dialogo__burbuja--tu {
+      animation-name: burbujaDer;
+    }
+
+    @keyframes burbujaIzq {
+      0% { opacity: 0; transform: translateX(-30px) scale(0.8); }
+      100% { opacity: 1; transform: translateX(0) scale(1); }
+    }
+
+    @keyframes burbujaDer {
+      0% { opacity: 0; transform: translateX(30px) scale(0.8); }
+      100% { opacity: 1; transform: translateX(0) scale(1); }
+    }
+
+    /* Typing indicator */
+    .dialogo__typing {
+      display: flex;
+      gap: 4px;
+      padding: 0.75rem 1.1rem;
+      background: #e3edf7;
+      border-radius: 16px;
+      border-bottom-left-radius: 4px;
+      align-self: flex-start;
+      max-width: 70px;
+    }
+
+    .dialogo__typing-dot {
+      width: 8px;
+      height: 8px;
+      background: #999;
+      border-radius: 50%;
+      animation: typingBounce 1.2s ease-in-out infinite;
+    }
+
+    .dialogo__typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .dialogo__typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes typingBounce {
+      0%, 60%, 100% { transform: translateY(0); }
+      30% { transform: translateY(-6px); }
     }
 
     .dialogo__avanzar {
       display: flex;
       justify-content: flex-end;
-      margin-top: 0.5rem;
+      margin-top: 0.75rem;
     }
 
     .dialogo__avanzar .btn {
       padding: 0.5rem 1.2rem;
       font-size: 0.85rem;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
-    .btn-mostrar-pasos {
-      margin: 1rem auto;
-      display: block;
+    .dialogo__avanzar .btn:hover {
+      transform: translateX(4px);
+    }
+
+    /* === Secciones animadas === */
+    .seccion-animada {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .seccion-animada--visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* === Dato curioso con pulso === */
+    .dato-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dato-card::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(240, 165, 0, 0.06) 0%, transparent 60%);
+      animation: pulseBg 3s ease infinite;
+      pointer-events: none;
+    }
+
+    @keyframes pulseBg {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 1; }
     }
   </style>
 </head>
@@ -120,26 +273,28 @@
            data-texto-facil="Aquí verás cómo es llegar a votar.">Llegando a la casilla</p>
       </section>
 
-      <!-- A) Pasos de llegada -->
-      <section class="mb-3">
-        <h2 class="mb-1">¿Qué pasa cuando llegas?</h2>
-        <div class="pasos-llegada" id="pasos-llegada"></div>
+      <!-- A) Timeline de pasos -->
+      <section class="mb-3 seccion-animada" id="seccion-pasos">
+        <h2 class="mb-2">¿Qué pasa cuando llegas?</h2>
+        <div class="timeline" id="timeline">
+          <div class="timeline__linea-progreso" id="timeline-progreso"></div>
+        </div>
       </section>
 
       <!-- B) Diálogo simulado -->
-      <section class="mb-3">
+      <section class="mb-3 seccion-animada" id="seccion-dialogo">
         <hr class="separador">
         <h2 class="mb-1 text-center">Conversación con los funcionarios</h2>
         <p class="text-center mb-1" style="font-size:0.9rem; color:#666;">Así será tu interacción en la casilla:</p>
         <div class="dialogo dialogo-seccion" id="dialogo-contenedor" role="log" aria-label="Conversación simulada con funcionarios de casilla">
         </div>
-        <div class="dialogo__avanzar" id="dialogo-avanzar" style="max-width:400px; margin:0.75rem auto 0;">
+        <div class="dialogo__avanzar" id="dialogo-avanzar" style="max-width:420px; margin:0.75rem auto 0;">
           <button class="btn btn--secundario" id="btn-dialogo">Continuar conversación →</button>
         </div>
       </section>
 
       <!-- Dato curioso -->
-      <div class="tarjeta tarjeta--destacada mb-3" id="dato-curioso-p3">
+      <div class="tarjeta tarjeta--destacada mb-3 dato-card seccion-animada" id="dato-curioso-p3">
         <strong>💡 Dato curioso</strong>
         <p class="mt-1" id="dato-p3-texto"
            data-texto-normal="" data-texto-facil=""></p>
@@ -157,45 +312,81 @@
   <script>
     renderBarraProgreso(3, document.getElementById('barra-progreso'));
 
+    // Scroll reveal
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('seccion-animada--visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.seccion-animada').forEach(function(el) {
+      observer.observe(el);
+    });
+
     cargarContenido().then(function(data) {
       var p3 = data.pantallas.p3;
 
-      // Pasos animados
-      var pasosEl = document.getElementById('pasos-llegada');
+      // Timeline de pasos
+      var timelineEl = document.getElementById('timeline');
+      var progreso = document.getElementById('timeline-progreso');
+      var totalPasos = p3.pasos_llegada.length;
+
       p3.pasos_llegada.forEach(function(paso, i) {
         var div = document.createElement('div');
-        div.className = 'paso-llegada';
+        div.className = 'timeline__paso';
         div.innerHTML =
-          '<span class="paso-llegada__numero">' + (i + 1) + '</span>' +
-          '<span class="paso-llegada__icono">' + paso.icono + '</span>' +
-          '<div class="paso-llegada__contenido">' +
-            '<div class="paso-llegada__titulo">' + paso.titulo + '</div>' +
-            '<p class="paso-llegada__texto" data-texto-normal="' + paso.texto + '" data-texto-facil="' + paso.texto_facil + '">' + paso.texto + '</p>' +
+          '<div class="timeline__dot">' + (i + 1) + '</div>' +
+          '<div class="timeline__tarjeta">' +
+            '<div class="timeline__header">' +
+              '<span class="timeline__icono">' + paso.icono + '</span>' +
+              '<span class="timeline__titulo">' + paso.titulo + '</span>' +
+            '</div>' +
+            '<p class="timeline__texto" data-texto-normal="' + paso.texto + '" data-texto-facil="' + paso.texto_facil + '">' + paso.texto + '</p>' +
           '</div>';
-        pasosEl.appendChild(div);
+        timelineEl.appendChild(div);
 
         setTimeout(function() {
-          div.classList.add('paso-llegada--visible');
-        }, 300 * (i + 1));
+          div.classList.add('timeline__paso--visible');
+          var pct = ((i + 1) / totalPasos) * 100;
+          progreso.style.height = pct + '%';
+        }, 500 * (i + 1));
       });
 
-      // Diálogo
+      // Diálogo con typing indicator
       var dialogoEl = document.getElementById('dialogo-contenedor');
       var btnDialogo = document.getElementById('btn-dialogo');
       var dialogoAvanzar = document.getElementById('dialogo-avanzar');
       var dialogoIdx = 0;
+      var animando = false;
       var usaFacil = function() { return document.body.classList.contains('lectura-facil'); };
 
       function mostrarBurbuja() {
-        if (dialogoIdx >= p3.dialogo.length) {
-          dialogoAvanzar.style.display = 'none';
-          return;
-        }
+        if (dialogoIdx >= p3.dialogo.length || animando) return;
+        animando = true;
 
         var msg = p3.dialogo[dialogoIdx];
-        var burbuja = document.createElement('div');
         var esFuncionario = msg.quien === 'funcionario';
 
+        // Mostrar typing indicator para funcionario
+        if (esFuncionario) {
+          var typing = document.createElement('div');
+          typing.className = 'dialogo__typing';
+          typing.innerHTML = '<div class="dialogo__typing-dot"></div><div class="dialogo__typing-dot"></div><div class="dialogo__typing-dot"></div>';
+          dialogoEl.appendChild(typing);
+
+          setTimeout(function() {
+            dialogoEl.removeChild(typing);
+            agregarBurbuja(msg, esFuncionario);
+          }, 800);
+        } else {
+          agregarBurbuja(msg, esFuncionario);
+        }
+      }
+
+      function agregarBurbuja(msg, esFuncionario) {
+        var burbuja = document.createElement('div');
         burbuja.className = 'dialogo__burbuja ' +
           (esFuncionario ? 'dialogo__burbuja--funcionario' : 'dialogo__burbuja--tu');
 
@@ -204,8 +395,10 @@
 
         burbuja.innerHTML = '<div class="dialogo__etiqueta">' + etiqueta + '</div>' + texto;
         dialogoEl.appendChild(burbuja);
+        burbuja.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
         dialogoIdx++;
+        animando = false;
 
         if (dialogoIdx >= p3.dialogo.length) {
           btnDialogo.textContent = '✓ Conversación completa';

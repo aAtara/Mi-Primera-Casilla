@@ -322,7 +322,9 @@
       msgEl.setAttribute('data-texto-facil', msgFacil);
 
       // Tarjeta cívica
-      generarTarjetaCivica(nombre, 2, 2, document.getElementById('tarjeta-civica-contenedor'));
+      var quizCorrectas = parseInt(sessionStorage.getItem('quizCorrectas')) || 2;
+      var quizTotal = parseInt(sessionStorage.getItem('quizTotal')) || 2;
+      generarTarjetaCivica(nombre, quizCorrectas, quizTotal, document.getElementById('tarjeta-civica-contenedor'));
 
       // Compartir
       var textoCompartir = p5.texto_compartir.replace('{url}', data.proyecto.url);

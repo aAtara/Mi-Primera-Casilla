@@ -51,13 +51,32 @@
       border: 2px solid var(--color-borde);
       border-radius: 8px;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
       position: relative;
+      overflow: hidden;
+    }
+
+    .boleta__partido::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(139, 0, 0, 0.06);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.5s ease, height 0.5s ease;
     }
 
     .boleta__partido:hover {
       border-color: var(--color-secundario);
-      background: #f7f9fc;
+      transform: translateX(4px);
+    }
+
+    .boleta__partido:hover::before {
+      width: 300px;
+      height: 300px;
     }
 
     .boleta__partido:focus-visible {
@@ -68,6 +87,15 @@
     .boleta__partido--seleccionado {
       border-color: var(--color-primario);
       background: #fdf0f0;
+      transform: scale(1.02);
+      box-shadow: 0 4px 15px rgba(139, 0, 0, 0.15);
+      animation: seleccionPulso 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes seleccionPulso {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1.02); }
     }
 
     .boleta__logo {
@@ -114,6 +142,13 @@
     .boleta__partido--seleccionado .boleta__marca {
       background: var(--color-primario);
       border-color: var(--color-primario);
+      animation: marcaPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes marcaPop {
+      0% { transform: scale(0) rotate(-90deg); }
+      60% { transform: scale(1.3) rotate(10deg); }
+      100% { transform: scale(1) rotate(0deg); }
     }
 
     .boleta__partido--seleccionado .boleta__marca::after {
@@ -121,6 +156,16 @@
       color: #fff;
       font-size: 1.1rem;
       font-weight: 800;
+    }
+
+    .boleta__partido--seleccionado .boleta__logo {
+      animation: logoPulse 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes logoPulse {
+      0% { transform: scale(1); }
+      40% { transform: scale(1.2); }
+      100% { transform: scale(1); }
     }
 
     .boleta-mensaje {
@@ -133,7 +178,15 @@
       font-size: 0.9rem;
       font-weight: 600;
       text-align: center;
-      animation: fadeIn 0.3s ease;
+      animation: shake 0.5s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-8px); }
+      40% { transform: translateX(8px); }
+      60% { transform: translateX(-5px); }
+      80% { transform: translateX(5px); }
     }
 
     /* === Doblado === */
@@ -217,13 +270,15 @@
     }
 
     .boleta-cae--animando {
-      animation: caerEnUrna 0.8s ease-in forwards;
+      animation: caerEnUrna 1s cubic-bezier(0.55, 0, 1, 0.45) forwards;
     }
 
     @keyframes caerEnUrna {
-      0% { transform: translateY(0); opacity: 1; }
-      60% { transform: translateY(100px); opacity: 1; }
-      100% { transform: translateY(120px); opacity: 0; }
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      30% { transform: translateY(-15px) rotate(-3deg); opacity: 1; }
+      70% { transform: translateY(90px) rotate(2deg); opacity: 1; }
+      85% { transform: translateY(110px) rotate(0deg) scaleY(0.8); opacity: 0.8; }
+      100% { transform: translateY(120px) rotate(0deg) scaleY(0); opacity: 0; }
     }
 
     .urna {
@@ -260,12 +315,25 @@
     .urna--recibida .urna__cuerpo {
       background: linear-gradient(180deg, #e8f5e9 0%, #c8e6c9 100%);
       border-color: var(--color-exito);
+      animation: urnaRecibe 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes urnaRecibe {
+      0% { transform: scale(1); }
+      30% { transform: scale(0.95); }
+      60% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
 
     .urna-exito {
       display: none;
       text-align: center;
-      animation: fadeIn 0.5s ease;
+      animation: exitoEntrada 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes exitoEntrada {
+      0% { opacity: 0; transform: translateY(30px) scale(0.8); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     .urna-exito__titulo {
@@ -328,7 +396,15 @@
 
     .seccion-oculta {
       display: none;
-      animation: fadeIn 0.5s ease;
+    }
+
+    .seccion-oculta[style*="block"] {
+      animation: seccionReveal 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes seccionReveal {
+      0% { opacity: 0; transform: translateY(40px) scale(0.95); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     .instruccion {
