@@ -1,0 +1,223 @@
+/* === Alto contraste === */
+body.alto-contraste {
+  --color-bg: #000000;
+  --color-texto: #ffffff;
+  --color-primario: #ff4444;
+  --color-secundario: #66bbff;
+  --color-acento: #ffff00;
+  --color-exito: #00ff00;
+  --color-error: #ff6666;
+  --color-borde: #666666;
+  --sombra: 0 0 0 2px #666;
+}
+
+body.alto-contraste .tarjeta,
+body.alto-contraste .checklist__item,
+body.alto-contraste .quiz__opcion,
+body.alto-contraste .campo__input,
+body.alto-contraste .dialogo__burbuja--funcionario {
+  background: #111;
+  color: #fff;
+}
+
+body.alto-contraste .dialogo__burbuja--tu {
+  background: #ff4444;
+}
+
+body.alto-contraste .tarjeta--destacada {
+  background: #1a1a00;
+}
+
+body.alto-contraste .tarjeta--dato {
+  background: #001a2e;
+}
+
+body.alto-contraste .btn--primario {
+  background: #ff4444;
+  color: #000;
+  font-weight: 800;
+}
+
+body.alto-contraste .quiz__opcion--correcta {
+  background: #003300;
+  color: #00ff00;
+  border-color: #00ff00;
+}
+
+body.alto-contraste .quiz__opcion--incorrecta {
+  background: #330000;
+  color: #ff6666;
+  border-color: #ff6666;
+}
+
+/* === Panel de accesibilidad === */
+.acc-boton {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--color-secundario);
+  background: #fff;
+  color: var(--color-secundario);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+}
+
+.acc-boton:hover {
+  background: var(--color-secundario);
+  color: #fff;
+}
+
+.acc-boton:focus-visible {
+  outline: 3px solid var(--color-acento);
+  outline-offset: 3px;
+}
+
+body.alto-contraste .acc-boton {
+  background: #222;
+  border-color: #ffff00;
+  color: #ffff00;
+}
+
+.acc-panel {
+  position: fixed;
+  top: 4rem;
+  right: 1rem;
+  z-index: 999;
+  background: #fff;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-borde);
+  padding: 1rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  min-width: 220px;
+  display: none;
+  animation: fadeIn 0.2s ease;
+}
+
+.acc-panel--abierto {
+  display: block;
+}
+
+body.alto-contraste .acc-panel {
+  background: #111;
+  border-color: #666;
+}
+
+.acc-panel__titulo {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--color-secundario);
+}
+
+.acc-panel__opcion {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.5rem;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-texto);
+  transition: background 0.15s ease;
+}
+
+.acc-panel__opcion:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+body.alto-contraste .acc-panel__opcion {
+  color: #fff;
+}
+
+body.alto-contraste .acc-panel__opcion:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.acc-panel__opcion--activo {
+  background: rgba(139, 0, 0, 0.08);
+  font-weight: 700;
+}
+
+.acc-panel__icono {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+/* === Lectura fácil === */
+body.lectura-facil {
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+body.lectura-facil h1 {
+  font-size: 1.8rem;
+}
+
+body.lectura-facil h2 {
+  font-size: 1.4rem;
+}
+
+/* === Controles de voz === */
+.voz-controles {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  display: none;
+  gap: 0.5rem;
+  background: #fff;
+  padding: 0.5rem;
+  border-radius: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--color-borde);
+}
+
+.voz-controles--visible {
+  display: flex;
+}
+
+.voz-controles__btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-secundario);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.voz-controles__btn:hover {
+  background: var(--color-primario);
+}
+
+body.alto-contraste .voz-controles {
+  background: #222;
+  border-color: #666;
+}
+
+/* === Focus visible global === */
+*:focus-visible {
+  outline: 3px solid var(--color-acento);
+  outline-offset: 2px;
+  border-radius: 2px;
+}

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El gran día — Mi Primera Casilla</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/componentes.css">
+  <link rel="stylesheet" href="styles/accesibilidad.css">
+  <style>
+    .pasos-llegada {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .paso-llegada {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem;
+      background: #fff;
+      border: 2px solid var(--color-borde);
+      border-radius: var(--radio-borde);
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: all 0.5s ease;
+    }
+
+    .paso-llegada--visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .paso-llegada__icono {
+      font-size: 2rem;
+      flex-shrink: 0;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f0f5fa;
+      border-radius: 50%;
+    }
+
+    .paso-llegada__contenido {
+      flex: 1;
+    }
+
+    .paso-llegada__titulo {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .paso-llegada__texto {
+      font-size: 0.9rem;
+      color: #555;
+      margin: 0;
+    }
+
+    .paso-llegada__numero {
+      width: 24px;
+      height: 24px;
+      background: var(--color-primario);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .dialogo-seccion {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .dialogo__avanzar {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 0.5rem;
+    }
+
+    .dialogo__avanzar .btn {
+      padding: 0.5rem 1.2rem;
+      font-size: 0.85rem;
+    }
+
+    .btn-mostrar-pasos {
+      margin: 1rem auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div id="barra-progreso"></div>
+
+  <button class="acc-boton" aria-label="Opciones de accesibilidad" title="Accesibilidad">♿</button>
+  <div class="acc-panel" role="dialog" aria-label="Panel de accesibilidad">
+    <div class="acc-panel__titulo">Accesibilidad</div>
+    <button class="acc-panel__opcion" data-acc="voz"><span class="acc-panel__icono">🔊</span> Narración por voz</button>
+    <button class="acc-panel__opcion" data-acc="lectura_facil"><span class="acc-panel__icono">📖</span> Lectura fácil</button>
+    <button class="acc-panel__opcion" data-acc="alto_contraste"><span class="acc-panel__icono">🌗</span> Alto contraste</button>
+  </div>
+  <div class="voz-controles" aria-label="Controles de narración">
+    <button class="voz-controles__btn voz-btn-pausar" aria-label="Pausar" title="Pausar">⏸️</button>
+    <button class="voz-controles__btn voz-btn-repetir" aria-label="Repetir" title="Repetir">🔁</button>
+    <button class="voz-controles__btn voz-btn-detener" aria-label="Detener" title="Detener">⏹️</button>
+  </div>
+
+  <main class="pantalla">
+    <div class="contenido-principal">
+      <section class="text-center mb-2">
+        <h1>El gran día</h1>
+        <p data-texto-normal="Llegando a la casilla"
+           data-texto-facil="Aquí verás cómo es llegar a votar.">Llegando a la casilla</p>
+      </section>
+
+      <!-- A) Pasos de llegada -->
+      <section class="mb-3">
+        <h2 class="mb-1">¿Qué pasa cuando llegas?</h2>
+        <div class="pasos-llegada" id="pasos-llegada"></div>
+      </section>
+
+      <!-- B) Diálogo simulado -->
+      <section class="mb-3">
+        <hr class="separador">
+        <h2 class="mb-1 text-center">Conversación con los funcionarios</h2>
+        <p class="text-center mb-1" style="font-size:0.9rem; color:#666;">Así será tu interacción en la casilla:</p>
+        <div class="dialogo dialogo-seccion" id="dialogo-contenedor" role="log" aria-label="Conversación simulada con funcionarios de casilla">
+        </div>
+        <div class="dialogo__avanzar" id="dialogo-avanzar" style="max-width:400px; margin:0.75rem auto 0;">
+          <button class="btn btn--secundario" id="btn-dialogo">Continuar conversación →</button>
+        </div>
+      </section>
+
+      <!-- Dato curioso -->
+      <div class="tarjeta tarjeta--destacada mb-3" id="dato-curioso-p3">
+        <strong>💡 Dato curioso</strong>
+        <p class="mt-1" id="dato-p3-texto"
+           data-texto-normal="" data-texto-facil=""></p>
+      </div>
+
+      <button class="btn btn--primario btn--grande"
+              onclick="irAPantalla('pantalla4.html')">
+        Siguiente: En la casilla →
+      </button>
+    </div>
+  </main>
+
+  <script src="js/navegacion.js"></script>
+  <script src="js/accesibilidad.js"></script>
+  <script>
+    renderBarraProgreso(3, document.getElementById('barra-progreso'));
+
+    cargarContenido().then(function(data) {
+      var p3 = data.pantallas.p3;
+
+      // Pasos animados
+      var pasosEl = document.getElementById('pasos-llegada');
+      p3.pasos_llegada.forEach(function(paso, i) {
+        var div = document.createElement('div');
+        div.className = 'paso-llegada';
+        div.innerHTML =
+          '<span class="paso-llegada__numero">' + (i + 1) + '</span>' +
+          '<span class="paso-llegada__icono">' + paso.icono + '</span>' +
+          '<div class="paso-llegada__contenido">' +
+            '<div class="paso-llegada__titulo">' + paso.titulo + '</div>' +
+            '<p class="paso-llegada__texto" data-texto-normal="' + paso.texto + '" data-texto-facil="' + paso.texto_facil + '">' + paso.texto + '</p>' +
+          '</div>';
+        pasosEl.appendChild(div);
+
+        setTimeout(function() {
+          div.classList.add('paso-llegada--visible');
+        }, 300 * (i + 1));
+      });
+
+      // Diálogo
+      var dialogoEl = document.getElementById('dialogo-contenedor');
+      var btnDialogo = document.getElementById('btn-dialogo');
+      var dialogoAvanzar = document.getElementById('dialogo-avanzar');
+      var dialogoIdx = 0;
+      var usaFacil = function() { return document.body.classList.contains('lectura-facil'); };
+
+      function mostrarBurbuja() {
+        if (dialogoIdx >= p3.dialogo.length) {
+          dialogoAvanzar.style.display = 'none';
+          return;
+        }
+
+        var msg = p3.dialogo[dialogoIdx];
+        var burbuja = document.createElement('div');
+        var esFuncionario = msg.quien === 'funcionario';
+
+        burbuja.className = 'dialogo__burbuja ' +
+          (esFuncionario ? 'dialogo__burbuja--funcionario' : 'dialogo__burbuja--tu');
+
+        var etiqueta = esFuncionario ? '👤 Funcionario' : '🙋 Tú';
+        var texto = usaFacil() ? msg.texto_facil : msg.texto;
+
+        burbuja.innerHTML = '<div class="dialogo__etiqueta">' + etiqueta + '</div>' + texto;
+        dialogoEl.appendChild(burbuja);
+
+        dialogoIdx++;
+
+        if (dialogoIdx >= p3.dialogo.length) {
+          btnDialogo.textContent = '✓ Conversación completa';
+          btnDialogo.disabled = true;
+          btnDialogo.style.opacity = '0.5';
+        }
+      }
+
+      mostrarBurbuja();
+
+      btnDialogo.addEventListener('click', function() {
+        mostrarBurbuja();
+      });
+
+      // Dato curioso
+      var datoEl = document.getElementById('dato-p3-texto');
+      datoEl.textContent = p3.dato_curioso;
+      datoEl.setAttribute('data-texto-normal', p3.dato_curioso);
+      datoEl.setAttribute('data-texto-facil', p3.dato_curioso_facil);
+    });
+  </script>
+</body>
+</html>

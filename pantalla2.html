@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Antes de votar — Mi Primera Casilla</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/componentes.css">
+  <link rel="stylesheet" href="styles/accesibilidad.css">
+  <style>
+    .mapa-simulado {
+      background: linear-gradient(135deg, #e8f0e8 0%, #d4e4d4 100%);
+      border: 2px solid var(--color-borde);
+      border-radius: var(--radio-borde);
+      padding: 2rem 1rem;
+      text-align: center;
+      position: relative;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .mapa-simulado__pin {
+      font-size: 2.5rem;
+      animation: rebote 1.5s ease infinite;
+    }
+
+    @keyframes rebote {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .mapa-simulado__texto {
+      font-weight: 700;
+      color: var(--color-secundario);
+    }
+
+    .mapa-simulado__sub {
+      font-size: 0.82rem;
+      color: #666;
+    }
+
+    .seccion-input-mapa {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .seccion-input-mapa .campo__input {
+      flex: 1;
+    }
+
+    .seccion-input-mapa .btn {
+      flex-shrink: 0;
+      padding: 0.75rem 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .quiz-contador {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #999;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="barra-progreso"></div>
+
+  <button class="acc-boton" aria-label="Opciones de accesibilidad" title="Accesibilidad">♿</button>
+  <div class="acc-panel" role="dialog" aria-label="Panel de accesibilidad">
+    <div class="acc-panel__titulo">Accesibilidad</div>
+    <button class="acc-panel__opcion" data-acc="voz"><span class="acc-panel__icono">🔊</span> Narración por voz</button>
+    <button class="acc-panel__opcion" data-acc="lectura_facil"><span class="acc-panel__icono">📖</span> Lectura fácil</button>
+    <button class="acc-panel__opcion" data-acc="alto_contraste"><span class="acc-panel__icono">🌗</span> Alto contraste</button>
+  </div>
+  <div class="voz-controles" aria-label="Controles de narración">
+    <button class="voz-controles__btn voz-btn-pausar" aria-label="Pausar" title="Pausar">⏸️</button>
+    <button class="voz-controles__btn voz-btn-repetir" aria-label="Repetir" title="Repetir">🔁</button>
+    <button class="voz-controles__btn voz-btn-detener" aria-label="Detener" title="Detener">⏹️</button>
+  </div>
+
+  <main class="pantalla">
+    <div class="contenido-principal">
+      <section class="text-center mb-2">
+        <h1>Antes de votar</h1>
+        <p data-texto-normal="Todo lo que necesitas saber antes del gran día"
+           data-texto-facil="Aquí te decimos qué llevar y cómo encontrar tu casilla.">Todo lo que necesitas saber antes del gran día</p>
+      </section>
+
+      <!-- A) Checklist -->
+      <section class="mb-3">
+        <h2 class="mb-1">¿Qué necesitas llevar?</h2>
+        <ul class="checklist" id="checklist" aria-label="Lista de requisitos para votar"></ul>
+      </section>
+
+      <!-- Dato curioso -->
+      <div class="tarjeta tarjeta--destacada mb-3" id="dato-curioso">
+        <strong>💡 Dato curioso</strong>
+        <p class="mt-1" id="dato-curioso-texto"
+           data-texto-normal=""
+           data-texto-facil=""></p>
+      </div>
+
+      <!-- B) Mapa simulado -->
+      <section class="mb-3">
+        <h2 class="mb-1">¿Cómo encuentras tu casilla?</h2>
+        <div class="seccion-input-mapa">
+          <input class="campo__input" type="text" id="input-seccion-mapa" placeholder="Tu sección electoral" inputmode="numeric" maxlength="6">
+          <button class="btn btn--secundario" id="btn-buscar-casilla">Buscar</button>
+        </div>
+        <div class="mapa-simulado" id="mapa-simulado">
+          <span class="mapa-simulado__pin">📍</span>
+          <span class="mapa-simulado__texto">Tu casilla está cerca</span>
+          <span class="mapa-simulado__sub" id="mapa-ayuda"></span>
+        </div>
+      </section>
+
+      <!-- C) Mini-quiz -->
+      <section class="mb-3">
+        <hr class="separador">
+        <h2 class="mb-1">Verifica lo que aprendiste</h2>
+        <p class="quiz-contador" id="quiz-contador"></p>
+        <div class="quiz" id="quiz-contenedor"></div>
+      </section>
+
+      <button class="btn btn--primario btn--grande mt-2" id="btn-siguiente"
+              onclick="irAPantalla('pantalla3.html')">
+        Siguiente: El gran día →
+      </button>
+    </div>
+  </main>
+
+  <script src="js/navegacion.js"></script>
+  <script src="js/accesibilidad.js"></script>
+  <script>
+    renderBarraProgreso(2, document.getElementById('barra-progreso'));
+
+    var seccion = obtenerSeccion();
+    if (seccion) {
+      document.getElementById('input-seccion-mapa').value = seccion;
+    }
+
+    cargarContenido().then(function(data) {
+      var p2 = data.pantallas.p2;
+
+      // Checklist
+      var checklistEl = document.getElementById('checklist');
+      p2.checklist.forEach(function(item, i) {
+        var li = document.createElement('li');
+        li.className = 'checklist__item';
+        li.setAttribute('tabindex', '0');
+        li.setAttribute('role', 'checkbox');
+        li.setAttribute('aria-checked', 'false');
+        li.innerHTML =
+          '<span class="checklist__icono">' + item.icono + '</span>' +
+          '<div class="checklist__texto">' +
+            '<strong data-texto-normal="' + item.texto + '" data-texto-facil="' + item.texto + '">' + item.texto + '</strong>' +
+            '<small data-texto-normal="' + item.detalle + '" data-texto-facil="' + item.detalle + '">' + item.detalle + '</small>' +
+          '</div>' +
+          '<div class="checklist__check" aria-hidden="true">✓</div>';
+
+        li.addEventListener('click', function() {
+          li.classList.toggle('checklist__item--marcado');
+          var marcado = li.classList.contains('checklist__item--marcado');
+          li.setAttribute('aria-checked', marcado ? 'true' : 'false');
+        });
+        li.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            li.click();
+          }
+        });
+
+        checklistEl.appendChild(li);
+      });
+
+      // Dato curioso
+      var datoEl = document.getElementById('dato-curioso-texto');
+      datoEl.textContent = p2.dato_curioso;
+      datoEl.setAttribute('data-texto-normal', p2.dato_curioso);
+      datoEl.setAttribute('data-texto-facil', p2.dato_curioso_facil);
+
+      // Mapa
+      var mapaAyuda = document.getElementById('mapa-ayuda');
+      mapaAyuda.textContent = p2.mapa.texto_ayuda;
+      mapaAyuda.setAttribute('data-texto-normal', p2.mapa.texto_ayuda);
+      mapaAyuda.setAttribute('data-texto-facil', p2.mapa.texto_ayuda_facil);
+
+      document.getElementById('btn-buscar-casilla').addEventListener('click', function() {
+        var val = document.getElementById('input-seccion-mapa').value.trim();
+        var mapaTexto = document.querySelector('.mapa-simulado__texto');
+        if (val) {
+          mapaTexto.textContent = 'Sección ' + val + ' — Casilla Básica 1';
+        } else {
+          mapaTexto.textContent = 'Ingresa tu sección para buscar';
+        }
+      });
+
+      // Quiz
+      var quizContenedor = document.getElementById('quiz-contenedor');
+      var correctas = 0;
+      var contestadas = 0;
+      var total = p2.quiz.length;
+      var contadorEl = document.getElementById('quiz-contador');
+      contadorEl.textContent = correctas + ' de ' + total + ' correctas';
+
+      p2.quiz.forEach(function(q, qi) {
+        var div = document.createElement('div');
+        div.className = 'tarjeta mb-1';
+
+        var pregHTML = '<p class="quiz__pregunta">' + (qi + 1) + '. ' + q.pregunta + '</p>';
+        pregHTML += '<div class="quiz__opciones">';
+        q.opciones.forEach(function(op, oi) {
+          pregHTML += '<button class="quiz__opcion" data-quiz="' + qi + '" data-opcion="' + oi + '">' + op + '</button>';
+        });
+        pregHTML += '</div>';
+        pregHTML += '<div class="quiz__feedback" id="quiz-fb-' + qi + '" style="display:none"></div>';
+        div.innerHTML = pregHTML;
+
+        div.querySelectorAll('.quiz__opcion').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            var qIdx = parseInt(btn.getAttribute('data-quiz'));
+            var oIdx = parseInt(btn.getAttribute('data-opcion'));
+            var esCorrecta = oIdx === p2.quiz[qIdx].correcta;
+            var feedback = document.getElementById('quiz-fb-' + qIdx);
+            var opciones = div.querySelectorAll('.quiz__opcion');
+
+            opciones.forEach(function(b) { b.disabled = true; });
+
+            if (esCorrecta) {
+              btn.classList.add('quiz__opcion--correcta');
+              feedback.className = 'quiz__feedback quiz__feedback--correcto';
+              feedback.textContent = '✅ ¡Correcto! ' + (document.body.classList.contains('lectura-facil')
+                ? p2.quiz[qIdx].explicacion_facil : p2.quiz[qIdx].explicacion);
+              correctas++;
+            } else {
+              btn.classList.add('quiz__opcion--incorrecta');
+              opciones[p2.quiz[qIdx].correcta].classList.add('quiz__opcion--correcta');
+              feedback.className = 'quiz__feedback quiz__feedback--incorrecto';
+              feedback.textContent = '❌ ' + (document.body.classList.contains('lectura-facil')
+                ? p2.quiz[qIdx].explicacion_facil : p2.quiz[qIdx].explicacion);
+            }
+
+            feedback.style.display = 'block';
+            contestadas++;
+            contadorEl.textContent = correctas + ' de ' + total + ' correctas';
+          });
+        });
+
+        quizContenedor.appendChild(div);
+      });
+    });
+  </script>
+</body>
+</html>

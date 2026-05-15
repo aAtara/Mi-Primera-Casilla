@@ -1,0 +1,297 @@
+{
+  "proyecto": {
+    "nombre": "Mi Primera Casilla",
+    "slogan": "Practica tu voto antes del gran día",
+    "subtitulo": "Simulación completa de la jornada electoral para primerovotantes",
+    "url": "https://mi-primera-casilla.vercel.app"
+  },
+  "pantallas": {
+    "p1": {
+      "titulo": "¡Hola, futuro votante!",
+      "descripcion": "En unos minutos vas a vivir, paso a paso, lo que pasa el día de la elección. Sin estrés, sin sorpresas.",
+      "campo_nombre": "¿Cómo te llamas?",
+      "campo_seccion": "¿Cuál es tu sección electoral? (está en tu INE)",
+      "boton": "Comenzar simulación →",
+      "texto_facil": "Aquí vas a practicar cómo se vota. Es fácil y rápido."
+    },
+    "p2": {
+      "titulo": "Antes de votar",
+      "subtitulo": "Todo lo que necesitas saber antes del gran día",
+      "checklist": [
+        {
+          "texto": "Credencial para Votar del INE (vigente o vencida)",
+          "detalle": "Tu INE vencida SÍ es válida para votar, siempre que tu foto y datos sean legibles.",
+          "icono": "🪪"
+        },
+        {
+          "texto": "Conocer tu número de sección electoral",
+          "detalle": "Está en tu credencial del INE, en la parte de atrás. Con ese número ubicas tu casilla.",
+          "icono": "🔢"
+        },
+        {
+          "texto": "Llegar en horario: casillas abiertas de 8:00 AM a 6:00 PM",
+          "detalle": "Si a las 6:00 PM estás formado en la fila, tienes derecho a votar aunque cierren.",
+          "icono": "🕗"
+        },
+        {
+          "texto": "No llevar propaganda ni ropa de partidos",
+          "detalle": "El día de la elección hay veda electoral. No puedes llevar camisetas, gorras o banderas de ningún partido.",
+          "icono": "🚫"
+        }
+      ],
+      "dato_curioso": "¿Sabías que puedes votar aunque tu INE esté vencida? Solo necesitas que tu foto y datos sean legibles. Esto lo garantiza el artículo 218 de la Ley General de Instituciones y Procedimientos Electorales (LGIPE).",
+      "dato_curioso_facil": "Puedes votar con tu INE vencida, si se ve tu foto. Es la ley.",
+      "mapa": {
+        "titulo": "¿Cómo encuentras tu casilla?",
+        "instruccion": "Ingresa tu sección electoral para ubicar tu casilla (simulación)",
+        "texto_ayuda": "En la vida real, puedes buscar tu casilla en ubicatucasilla.ine.mx con tu sección electoral.",
+        "texto_ayuda_facil": "Busca tu casilla en la página del INE con tu número de sección."
+      },
+      "quiz": [
+        {
+          "pregunta": "¿Qué pasa si tu credencial del INE está vencida?",
+          "opciones": [
+            "No puedes votar",
+            "Sí puedes votar si la foto es legible",
+            "Debes tramitar una nueva primero"
+          ],
+          "correcta": 1,
+          "explicacion": "El artículo 218 de la LGIPE permite votar con INE vencida siempre que la fotografía y datos sean legibles.",
+          "explicacion_facil": "Sí puedes votar con INE vencida. Solo necesitan ver tu foto."
+        },
+        {
+          "pregunta": "¿A qué hora cierran las casillas?",
+          "opciones": [
+            "4:00 PM",
+            "6:00 PM",
+            "8:00 PM"
+          ],
+          "correcta": 1,
+          "explicacion": "Las casillas abren a las 8:00 AM y cierran a las 6:00 PM, o cuando vote el último ciudadano en fila a esa hora.",
+          "explicacion_facil": "Cierran a las 6 de la tarde. Si estás en la fila a esa hora, sí puedes votar."
+        }
+      ],
+      "boton": "Siguiente: El gran día →",
+      "texto_facil": "Aquí te decimos qué llevar y cómo encontrar tu casilla."
+    },
+    "p3": {
+      "titulo": "El gran día",
+      "subtitulo": "Llegando a la casilla",
+      "pasos_llegada": [
+        {
+          "icono": "🚶",
+          "titulo": "Llegas a la casilla",
+          "texto": "Caminas hasta el lugar indicado. Verás letreros con tu número de sección y la fila para votar.",
+          "texto_facil": "Llegas al lugar donde vas a votar. Hay letreros."
+        },
+        {
+          "icono": "🧍",
+          "titulo": "Te formas en la fila",
+          "texto": "Esperas tu turno con calma. La fila suele avanzar rápido, entre 5 y 15 minutos en promedio.",
+          "texto_facil": "Haces fila. Normalmente es rápida."
+        },
+        {
+          "icono": "🪪",
+          "titulo": "Te identificas",
+          "texto": "Cuando llegas al frente, le entregas tu INE al presidente de casilla. Buscan tu nombre en la lista nominal.",
+          "texto_facil": "Muestras tu INE. Buscan tu nombre en una lista."
+        },
+        {
+          "icono": "📄",
+          "titulo": "Recibes tu boleta",
+          "texto": "Te entregan la boleta electoral. Es una hoja grande donde están los partidos y candidatos.",
+          "texto_facil": "Te dan la hoja para votar."
+        }
+      ],
+      "dialogo": [
+        {
+          "quien": "funcionario",
+          "texto": "Buenos días, ¿me proporciona su credencial de elector?",
+          "texto_facil": "Hola, ¿me da su INE?"
+        },
+        {
+          "quien": "tu",
+          "texto": "Aquí está.",
+          "texto_facil": "Aquí está."
+        },
+        {
+          "quien": "funcionario",
+          "texto": "Gracias. Déjeme buscar su nombre en la lista nominal... Aquí está. Su nombre coincide.",
+          "texto_facil": "Gracias. Ya encontré su nombre en la lista."
+        },
+        {
+          "quien": "funcionario",
+          "texto": "Aquí tiene su boleta. Puede pasar al biombo para marcar su voto en privado.",
+          "texto_facil": "Aquí está su boleta. Pase a votar."
+        },
+        {
+          "quien": "tu",
+          "texto": "Gracias.",
+          "texto_facil": "Gracias."
+        }
+      ],
+      "dato_curioso": "¿Sabías que tienes derecho a votar aunque no hayas ido nunca antes? No hay multa ni sanción por no haber votado en elecciones anteriores. Tu derecho al voto no caduca.",
+      "dato_curioso_facil": "No hay multa si nunca has votado. Puedes votar por primera vez sin problema.",
+      "boton": "Siguiente: En la casilla →",
+      "texto_facil": "Aquí verás cómo es llegar a votar y qué te dicen los funcionarios."
+    },
+    "p4": {
+      "titulo": "En la casilla",
+      "subtitulo": "El momento más importante: tu voto",
+      "instruccion_boleta": "Haz clic en el partido o candidatura de tu preferencia para marcar tu voto.",
+      "instruccion_boleta_facil": "Toca el partido que quieras elegir.",
+      "partidos_ficticios": [
+        {
+          "nombre": "Partido del Águila",
+          "siglas": "PA",
+          "color": "#1B5E20",
+          "candidato": "Roberto Montaño Luján",
+          "logo_letra": "A"
+        },
+        {
+          "nombre": "Partido del Nopal",
+          "siglas": "PN",
+          "color": "#B71C1C",
+          "candidato": "Ana Luisa Terrazas Soto",
+          "logo_letra": "N"
+        },
+        {
+          "nombre": "Partido del Sol",
+          "siglas": "PS",
+          "color": "#E65100",
+          "candidato": "Diego Armando Fierro Mata",
+          "logo_letra": "S"
+        },
+        {
+          "nombre": "Candidatura Independiente",
+          "siglas": "CI",
+          "color": "#4A148C",
+          "candidato": "María Guadalupe Rascón Díaz",
+          "logo_letra": "I"
+        }
+      ],
+      "mensaje_doble_marca": "Solo puedes marcar una opción. Si marcas dos o más, tu voto será nulo. Haz clic en tu selección actual para desmarcarlo.",
+      "mensaje_doble_marca_facil": "Solo puedes elegir uno. Toca otra vez para quitar tu marca.",
+      "ejemplos_voto": [
+        {
+          "tipo": "Marca en un solo partido o candidatura",
+          "valido": true,
+          "explicacion": "El voto es válido cuando marcas claramente un solo cuadro."
+        },
+        {
+          "tipo": "Marca cruzando varios cuadros",
+          "valido": false,
+          "explicacion": "Si la marca toca dos o más cuadros, el voto es nulo."
+        },
+        {
+          "tipo": "Boleta en blanco (sin marcar nada)",
+          "valido": false,
+          "explicacion": "Si no marcas nada, el voto se anula."
+        },
+        {
+          "tipo": "Escribir texto o dibujar en la boleta",
+          "valido": false,
+          "explicacion": "Cualquier escritura o dibujo extra anula el voto."
+        }
+      ],
+      "pasos_doblado": [
+        {
+          "paso": 1,
+          "texto": "Toma la boleta extendida frente a ti",
+          "texto_facil": "Agarra la boleta abierta"
+        },
+        {
+          "paso": 2,
+          "texto": "Dóblala por la mitad, de izquierda a derecha",
+          "texto_facil": "Dóblala a la mitad"
+        },
+        {
+          "paso": 3,
+          "texto": "Dóblala una vez más para cubrir tu voto",
+          "texto_facil": "Dóblala otra vez para tapar tu voto"
+        },
+        {
+          "paso": 4,
+          "texto": "¡Listo! Tu voto está protegido y nadie puede ver tu decisión",
+          "texto_facil": "¡Listo! Nadie puede ver lo que votaste"
+        }
+      ],
+      "mensaje_urna": "¡Tu voto ha sido depositado correctamente!",
+      "mensaje_urna_facil": "¡Ya votaste! Tu voto está en la urna.",
+      "boton": "Siguiente: ¡Ya voté! →",
+      "texto_facil": "Aquí vas a marcar tu boleta, doblarla y meterla en la urna."
+    },
+    "p5": {
+      "titulo": "¡Ya votaste!",
+      "subtitulo": "Felicidades, completaste tu primera simulación electoral",
+      "mensaje_felicitacion": "¡Lo lograste, {nombre}! Ya practicaste tu primer voto. Ahora sabes exactamente qué va a pasar el día de la elección.",
+      "mensaje_felicitacion_facil": "¡Muy bien, {nombre}! Ya sabes cómo votar.",
+      "tarjeta_civica": {
+        "titulo": "Perfil Cívico",
+        "subtitulo": "Votante Informado",
+        "etiqueta": "Mi Primera Casilla 2026",
+        "campo_respuestas": "Preguntas correctas"
+      },
+      "datos_chihuahua": [
+        {
+          "dato": "En las elecciones de 2021, solo el 42% de los jóvenes chihuahuenses de 18 a 24 años emitió su voto.",
+          "dato_facil": "Solo 4 de cada 10 jóvenes de Chihuahua votaron en 2021."
+        },
+        {
+          "dato": "Chihuahua tiene más de 800,000 jóvenes entre 18 y 29 años inscritos en la lista nominal.",
+          "dato_facil": "Más de 800 mil jóvenes en Chihuahua pueden votar."
+        },
+        {
+          "dato": "Tu voto puede ser decisivo: en municipios pequeños de Chihuahua, las elecciones se han decidido por menos de 500 votos de diferencia.",
+          "dato_facil": "En pueblos chicos, unos pocos votos pueden cambiar quién gana."
+        }
+      ],
+      "texto_compartir": "Ya practiqué mi primer voto con Mi Primera Casilla 🗳️ ¿Tú ya sabes cómo votar? Pruébalo en: {url}",
+      "enlaces": {
+        "iee_chihuahua": {
+          "nombre": "Instituto Estatal Electoral de Chihuahua",
+          "url": "https://www.ieechihuahua.org.mx"
+        },
+        "ine": {
+          "nombre": "Instituto Nacional Electoral",
+          "url": "https://www.ine.mx"
+        },
+        "ubica_casilla": {
+          "nombre": "Ubica tu casilla",
+          "url": "https://ubicatucasilla.ine.mx"
+        }
+      },
+      "boton_reiniciar": "Volver a empezar",
+      "texto_facil": "¡Terminaste! Ya sabes cómo se vota."
+    }
+  },
+  "accesibilidad": {
+    "boton_titulo": "Accesibilidad",
+    "opciones": {
+      "voz": {
+        "nombre": "Narración por voz",
+        "icono": "🔊",
+        "descripcion": "Lee en voz alta el contenido de la pantalla"
+      },
+      "lectura_facil": {
+        "nombre": "Lectura fácil",
+        "icono": "📖",
+        "descripcion": "Muestra el texto en versión simplificada"
+      },
+      "alto_contraste": {
+        "nombre": "Alto contraste",
+        "icono": "🌗",
+        "descripcion": "Fondo negro con letras grandes y claras"
+      }
+    }
+  },
+  "barra_progreso": {
+    "pasos": [
+      { "numero": 1, "etiqueta": "Inicio" },
+      { "numero": 2, "etiqueta": "Antes de votar" },
+      { "numero": 3, "etiqueta": "El gran día" },
+      { "numero": 4, "etiqueta": "Tu voto" },
+      { "numero": 5, "etiqueta": "¡Listo!" }
+    ]
+  }
+}

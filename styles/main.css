@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@300;400;700&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-primario: #8B0000;
+  --color-secundario: #1a3a5c;
+  --color-acento: #f0a500;
+  --color-bg: #f8f6f1;
+  --color-texto: #1a1a1a;
+  --color-exito: #2e7d32;
+  --color-error: #c62828;
+  --color-borde: #d4c8b0;
+  --radio-borde: 12px;
+  --sombra: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --max-ancho: 720px;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Lato', 'Segoe UI', sans-serif;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-texto);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-primario);
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-secundario);
+}
+
+h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: 0.75rem;
+}
+
+a {
+  color: var(--color-primario);
+  text-decoration: underline;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--color-acento);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+main {
+  width: 100%;
+  max-width: var(--max-ancho);
+  padding: 1.5rem 1.25rem 3rem;
+  flex: 1;
+}
+
+.pantalla {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@media (min-width: 600px) {
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 1.75rem; }
+  main { padding: 2rem 2rem 4rem; }
+}

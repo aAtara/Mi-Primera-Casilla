@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>En la casilla — Mi Primera Casilla</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/componentes.css">
+  <link rel="stylesheet" href="styles/accesibilidad.css">
+  <style>
+    /* === Boleta === */
+    .boleta {
+      background: #fff;
+      border: 3px solid var(--color-secundario);
+      border-radius: var(--radio-borde);
+      overflow: hidden;
+    }
+
+    .boleta__header {
+      background: var(--color-secundario);
+      color: #fff;
+      padding: 0.75rem 1rem;
+      text-align: center;
+      font-family: var(--font-display);
+    }
+
+    .boleta__header h3 {
+      color: #fff;
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    .boleta__header p {
+      font-size: 0.8rem;
+      opacity: 0.8;
+      margin: 0.2rem 0 0;
+    }
+
+    .boleta__cuerpo {
+      padding: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .boleta__partido {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem;
+      border: 2px solid var(--color-borde);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .boleta__partido:hover {
+      border-color: var(--color-secundario);
+      background: #f7f9fc;
+    }
+
+    .boleta__partido:focus-visible {
+      outline: 3px solid var(--color-acento);
+      outline-offset: 2px;
+    }
+
+    .boleta__partido--seleccionado {
+      border-color: var(--color-primario);
+      background: #fdf0f0;
+    }
+
+    .boleta__logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.3rem;
+      font-family: var(--font-display);
+      flex-shrink: 0;
+    }
+
+    .boleta__info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .boleta__nombre-partido {
+      font-size: 0.95rem;
+    }
+
+    .boleta__candidato {
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    .boleta__marca {
+      width: 28px;
+      height: 28px;
+      border: 2px solid var(--color-borde);
+      border-radius: 4px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .boleta__partido--seleccionado .boleta__marca {
+      background: var(--color-primario);
+      border-color: var(--color-primario);
+    }
+
+    .boleta__partido--seleccionado .boleta__marca::after {
+      content: '✕';
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 800;
+    }
+
+    .boleta-mensaje {
+      display: none;
+      padding: 0.75rem 1rem;
+      background: #fff3e0;
+      border: 1px solid var(--color-acento);
+      border-radius: var(--radio-borde);
+      color: #e65100;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    /* === Doblado === */
+    .doblado {
+      text-align: center;
+    }
+
+    .boleta-doblado {
+      width: 200px;
+      height: 260px;
+      margin: 1.5rem auto;
+      background: linear-gradient(135deg, #fff 0%, #f5f5f5 100%);
+      border: 2px solid var(--color-secundario);
+      border-radius: 4px;
+      position: relative;
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: #999;
+    }
+
+    .boleta-doblado::after {
+      content: '✕';
+      font-size: 3rem;
+      color: var(--color-primario);
+      opacity: 0.3;
+    }
+
+    .boleta-doblado--medio {
+      height: 130px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .boleta-doblado--medio::after {
+      font-size: 1.5rem;
+    }
+
+    .boleta-doblado--completo {
+      height: 65px;
+      width: 200px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .boleta-doblado--completo::after {
+      font-size: 0.8rem;
+      opacity: 0;
+    }
+
+    .boleta-doblado--final {
+      background: linear-gradient(135deg, #e8e8e8 0%, #d0d0d0 100%);
+      border-color: #999;
+    }
+
+    .doblado__texto {
+      font-size: 1rem;
+      color: var(--color-secundario);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    /* === Urna === */
+    .urna-contenedor {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      position: relative;
+      min-height: 280px;
+    }
+
+    .boleta-cae {
+      width: 100px;
+      height: 30px;
+      background: linear-gradient(135deg, #e8e8e8, #d0d0d0);
+      border: 2px solid #999;
+      border-radius: 3px;
+      z-index: 2;
+      transition: all 0.3s ease;
+    }
+
+    .boleta-cae--animando {
+      animation: caerEnUrna 0.8s ease-in forwards;
+    }
+
+    @keyframes caerEnUrna {
+      0% { transform: translateY(0); opacity: 1; }
+      60% { transform: translateY(100px); opacity: 1; }
+      100% { transform: translateY(120px); opacity: 0; }
+    }
+
+    .urna {
+      width: 160px;
+      position: relative;
+    }
+
+    .urna__ranura {
+      width: 80px;
+      height: 8px;
+      background: #333;
+      border-radius: 4px;
+      margin: 0 auto 0;
+    }
+
+    .urna__cuerpo {
+      width: 160px;
+      height: 180px;
+      background: linear-gradient(180deg, #f5f5f5 0%, #e0e0e0 100%);
+      border: 3px solid #666;
+      border-radius: 4px 4px 8px 8px;
+      margin-top: -2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .urna__cuerpo::after {
+      content: '🗳️';
+      font-size: 2.5rem;
+    }
+
+    .urna--recibida .urna__cuerpo {
+      background: linear-gradient(180deg, #e8f5e9 0%, #c8e6c9 100%);
+      border-color: var(--color-exito);
+    }
+
+    .urna-exito {
+      display: none;
+      text-align: center;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .urna-exito__titulo {
+      color: var(--color-exito);
+      font-size: 1.3rem;
+    }
+
+    /* === Confetti === */
+    .confetti {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 100;
+      overflow: hidden;
+    }
+
+    .confetti__pieza {
+      position: absolute;
+      top: -10px;
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      animation: confettiCae 2.5s ease-out forwards;
+    }
+
+    @keyframes confettiCae {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    }
+
+    /* === Tabla resumen === */
+    .tabla-resumen {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .tabla-resumen th, .tabla-resumen td {
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid var(--color-borde);
+    }
+
+    .tabla-resumen th {
+      background: var(--color-secundario);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .tabla-resumen tr:nth-child(even) {
+      background: #f9f7f3;
+    }
+
+    .valido { color: var(--color-exito); font-weight: 700; }
+    .nulo { color: var(--color-error); font-weight: 700; }
+
+    .seccion-oculta {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .instruccion {
+      text-align: center;
+      font-size: 0.95rem;
+      color: var(--color-secundario);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div id="barra-progreso"></div>
+
+  <button class="acc-boton" aria-label="Opciones de accesibilidad" title="Accesibilidad">♿</button>
+  <div class="acc-panel" role="dialog" aria-label="Panel de accesibilidad">
+    <div class="acc-panel__titulo">Accesibilidad</div>
+    <button class="acc-panel__opcion" data-acc="voz"><span class="acc-panel__icono">🔊</span> Narración por voz</button>
+    <button class="acc-panel__opcion" data-acc="lectura_facil"><span class="acc-panel__icono">📖</span> Lectura fácil</button>
+    <button class="acc-panel__opcion" data-acc="alto_contraste"><span class="acc-panel__icono">🌗</span> Alto contraste</button>
+  </div>
+  <div class="voz-controles" aria-label="Controles de narración">
+    <button class="voz-controles__btn voz-btn-pausar" aria-label="Pausar" title="Pausar">⏸️</button>
+    <button class="voz-controles__btn voz-btn-repetir" aria-label="Repetir" title="Repetir">🔁</button>
+    <button class="voz-controles__btn voz-btn-detener" aria-label="Detener" title="Detener">⏹️</button>
+  </div>
+
+  <main class="pantalla">
+    <div class="contenido-principal">
+      <section class="text-center mb-2">
+        <h1 id="titulo-p4">En la casilla</h1>
+        <p id="subtitulo-p4"
+           data-texto-normal="El momento más importante: tu voto"
+           data-texto-facil="Aquí vas a marcar tu boleta">El momento más importante: tu voto</p>
+      </section>
+
+      <!-- A) Boleta interactiva -->
+      <section class="mb-3">
+        <h2 class="mb-1">Tu boleta electoral</h2>
+        <p class="instruccion" id="instruccion-boleta"
+           data-texto-normal="Haz clic en el partido o candidatura de tu preferencia para marcar tu voto."
+           data-texto-facil="Toca el partido que quieras elegir.">Haz clic en el partido o candidatura de tu preferencia para marcar tu voto.</p>
+
+        <div class="boleta">
+          <div class="boleta__header">
+            <h3>Elección Simulada — Presidencia Municipal</h3>
+            <p>Simulación con fines educativos — Partidos ficticios</p>
+          </div>
+          <div class="boleta__cuerpo" id="boleta-partidos" role="radiogroup" aria-label="Opciones de voto">
+          </div>
+        </div>
+        <div class="boleta-mensaje mt-1" id="boleta-mensaje" role="alert" aria-live="polite"></div>
+      </section>
+
+      <!-- B) Doblado de boleta -->
+      <section class="mb-3 seccion-oculta" id="seccion-doblar">
+        <hr class="separador">
+        <h2 class="mb-1 text-center">Dobla tu boleta</h2>
+        <div class="doblado">
+          <p class="doblado__texto" id="doblado-texto">Toma la boleta extendida frente a ti</p>
+          <div class="boleta-doblado" id="boleta-visual"></div>
+          <button class="btn btn--secundario" id="btn-doblar">Doblar por la mitad →</button>
+        </div>
+      </section>
+
+      <!-- C) Depositar en urna -->
+      <section class="mb-3 seccion-oculta" id="seccion-urna">
+        <hr class="separador">
+        <h2 class="mb-1 text-center">Deposita tu voto</h2>
+        <div class="urna-contenedor">
+          <div class="boleta-cae" id="boleta-cae"></div>
+          <div class="urna" id="urna-body">
+            <div class="urna__ranura"></div>
+            <div class="urna__cuerpo"></div>
+          </div>
+          <button class="btn btn--primario mt-1" id="btn-depositar">Depositar boleta en la urna</button>
+        </div>
+
+        <div class="urna-exito mt-2" id="urna-exito">
+          <h2 class="urna-exito__titulo">🎉 ¡Tu voto ha sido depositado!</h2>
+          <p data-texto-normal="Tu voto fue depositado correctamente en la urna. Nadie puede ver lo que votaste."
+             data-texto-facil="¡Ya votaste! Nadie sabe lo que elegiste.">Tu voto fue depositado correctamente en la urna. Nadie puede ver lo que votaste.</p>
+        </div>
+      </section>
+
+      <!-- D) Resumen educativo -->
+      <section class="mb-3">
+        <hr class="separador">
+        <h2 class="mb-1">¿Cuándo es válido tu voto?</h2>
+        <div class="tarjeta">
+          <table class="tabla-resumen" id="tabla-ejemplos">
+            <thead>
+              <tr>
+                <th>Situación</th>
+                <th>¿Es válido?</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <button class="btn btn--primario btn--grande mt-2" id="btn-siguiente-p5" style="display: none;"
+              onclick="irAPantalla('pantalla5.html')">
+        Siguiente: ¡Ya voté! →
+      </button>
+    </div>
+  </main>
+
+  <div class="confetti" id="confetti"></div>
+
+  <script src="js/navegacion.js"></script>
+  <script src="js/accesibilidad.js"></script>
+  <script src="js/boleta.js"></script>
+  <script>
+    renderBarraProgreso(4, document.getElementById('barra-progreso'));
+
+    cargarContenido().then(function(data) {
+      var p4 = data.pantallas.p4;
+      window._contenidoP4 = p4;
+
+      initBoleta(p4.partidos_ficticios);
+      initDoblado(p4.pasos_doblado);
+      initUrna();
+
+      var tbody = document.querySelector('#tabla-ejemplos tbody');
+      p4.ejemplos_voto.forEach(function(ej) {
+        var tr = document.createElement('tr');
+        tr.innerHTML = '<td>' + ej.tipo + '</td><td class="' +
+          (ej.valido ? 'valido' : 'nulo') + '">' +
+          (ej.valido ? '✅ Válido' : '❌ Nulo') + '</td>';
+        tbody.appendChild(tr);
+      });
+    });
+  </script>
+</body>
+</html>

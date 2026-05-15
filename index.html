@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Primera Casilla — Practica tu voto</title>
+  <meta name="description" content="Simulación interactiva de la jornada electoral para primerovotantes. Practica tu voto antes del gran día.">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/componentes.css">
+  <link rel="stylesheet" href="styles/accesibilidad.css">
+  <style>
+    .hero {
+      text-align: center;
+      padding: 2rem 0 1rem;
+    }
+
+    .hero__icono {
+      font-size: 3.5rem;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .hero__slogan {
+      font-size: 1.15rem;
+      color: var(--color-secundario);
+      font-weight: 400;
+      margin-bottom: 0.25rem;
+    }
+
+    .hero__subtitulo {
+      font-size: 0.9rem;
+      color: #777;
+      margin-bottom: 0;
+    }
+
+    .formulario {
+      margin-top: 2rem;
+    }
+
+    .inicio-footer {
+      text-align: center;
+      margin-top: 2.5rem;
+      font-size: 0.8rem;
+      color: #999;
+    }
+
+    .inicio-footer a {
+      color: var(--color-secundario);
+    }
+
+    .campo__nota {
+      font-size: 0.78rem;
+      color: #999;
+      margin-top: 0.15rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra de progreso -->
+  <div id="barra-progreso"></div>
+
+  <!-- Botón de accesibilidad -->
+  <button class="acc-boton" aria-label="Opciones de accesibilidad" title="Accesibilidad">♿</button>
+  <div class="acc-panel" role="dialog" aria-label="Panel de accesibilidad">
+    <div class="acc-panel__titulo">Accesibilidad</div>
+    <button class="acc-panel__opcion" data-acc="voz">
+      <span class="acc-panel__icono">🔊</span> Narración por voz
+    </button>
+    <button class="acc-panel__opcion" data-acc="lectura_facil">
+      <span class="acc-panel__icono">📖</span> Lectura fácil
+    </button>
+    <button class="acc-panel__opcion" data-acc="alto_contraste">
+      <span class="acc-panel__icono">🌗</span> Alto contraste
+    </button>
+  </div>
+
+  <!-- Controles de voz -->
+  <div class="voz-controles" aria-label="Controles de narración">
+    <button class="voz-controles__btn voz-btn-pausar" aria-label="Pausar narración" title="Pausar">⏸️</button>
+    <button class="voz-controles__btn voz-btn-repetir" aria-label="Repetir narración" title="Repetir">🔁</button>
+    <button class="voz-controles__btn voz-btn-detener" aria-label="Detener narración" title="Detener">⏹️</button>
+  </div>
+
+  <main class="pantalla">
+    <div class="contenido-principal">
+      <section class="hero">
+        <span class="hero__icono" aria-hidden="true">🗳️</span>
+        <h1 id="titulo-proyecto">Mi Primera Casilla</h1>
+        <p class="hero__slogan" id="slogan"
+           data-texto-normal="Practica tu voto antes del gran día"
+           data-texto-facil="Aprende a votar aquí">Practica tu voto antes del gran día</p>
+        <p class="hero__subtitulo" id="subtitulo"
+           data-texto-normal="Simulación completa de la jornada electoral para primerovotantes"
+           data-texto-facil="Es fácil y rápido">Simulación completa de la jornada electoral para primerovotantes</p>
+      </section>
+
+      <form class="formulario" id="form-inicio" autocomplete="off">
+        <div class="campo">
+          <label class="campo__label" for="input-nombre">¿Cómo te llamas?</label>
+          <input class="campo__input" type="text" id="input-nombre" placeholder="Tu nombre" maxlength="50" autofocus>
+          <span class="campo__nota">Solo para personalizar tu experiencia. No se guarda ni se envía.</span>
+        </div>
+
+        <div class="campo">
+          <label class="campo__label" for="input-seccion">¿Cuál es tu sección electoral?</label>
+          <input class="campo__input" type="text" id="input-seccion" placeholder="Ej. 1234" maxlength="6" inputmode="numeric" pattern="[0-9]*">
+          <span class="campo__nota">Está en la parte trasera de tu INE. Es solo para la simulación.</span>
+        </div>
+
+        <button type="submit" class="btn btn--primario btn--grande mt-2" id="btn-comenzar">
+          Comenzar simulación →
+        </button>
+      </form>
+    </div>
+
+    <div class="inicio-footer">
+      <p>Un proyecto del <strong>TecNM Campus Delicias</strong> para el<br>
+      <a href="https://www.ieechihuahua.org.mx" target="_blank" rel="noopener">Hackathón de Ciberdemocracia 2026</a>
+      — IEE Chihuahua</p>
+    </div>
+  </main>
+
+  <script src="js/navegacion.js"></script>
+  <script src="js/accesibilidad.js"></script>
+  <script>
+    renderBarraProgreso(1, document.getElementById('barra-progreso'));
+
+    document.getElementById('form-inicio').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var nombre = document.getElementById('input-nombre').value.trim() || 'Ciudadano';
+      var seccion = document.getElementById('input-seccion').value.trim();
+      guardarDatos(nombre, seccion);
+      irAPantalla('pantalla2.html');
+    });
+  </script>
+</body>
+</html>

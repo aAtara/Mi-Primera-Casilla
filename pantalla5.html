@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¡Ya votaste! — Mi Primera Casilla</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/componentes.css">
+  <link rel="stylesheet" href="styles/accesibilidad.css">
+  <style>
+    .celebracion {
+      text-align: center;
+      padding: 1.5rem 0;
+    }
+
+    .celebracion__emoji {
+      font-size: 4rem;
+      display: block;
+      margin-bottom: 0.75rem;
+      animation: pulso 1.5s ease infinite;
+    }
+
+    @keyframes pulso {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .celebracion__titulo {
+      color: var(--color-exito);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Tarjeta cívica */
+    .tarjeta-civica {
+      background: linear-gradient(145deg, #1a3a5c 0%, #0d2240 100%);
+      color: #fff;
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(26, 58, 92, 0.35);
+    }
+
+    .tarjeta-civica::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(240, 165, 0, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .tarjeta-civica__badge {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .tarjeta-civica__etiqueta {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--color-acento);
+      font-weight: 700;
+    }
+
+    .tarjeta-civica__nombre {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      color: #fff;
+      margin: 0.5rem 0 0.2rem;
+    }
+
+    .tarjeta-civica__rol {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 1.25rem;
+    }
+
+    .tarjeta-civica__stats {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .tarjeta-civica__stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .tarjeta-civica__stat-num {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-acento);
+    }
+
+    .tarjeta-civica__stat-label {
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .tarjeta-civica__footer {
+      font-size: 0.7rem;
+      color: rgba(255, 255, 255, 0.4);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 0.75rem;
+    }
+
+    /* Compartir */
+    .compartir {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .compartir .btn {
+      font-size: 0.9rem;
+      padding: 0.7rem 1.2rem;
+    }
+
+    .btn--whatsapp {
+      background: #25D366;
+      color: #fff;
+    }
+
+    .btn--whatsapp:hover {
+      background: #1da851;
+    }
+
+    .btn--x {
+      background: #000;
+      color: #fff;
+    }
+
+    .btn--x:hover {
+      background: #333;
+    }
+
+    /* Datos */
+    .datos-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .dato-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .dato-item__numero {
+      width: 28px;
+      height: 28px;
+      background: var(--color-acento);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    .dato-item__texto {
+      font-size: 0.92rem;
+      color: var(--color-texto);
+    }
+
+    .enlaces-oficiales {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .enlace-oficial {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      background: #fff;
+      border: 1px solid var(--color-borde);
+      border-radius: var(--radio-borde);
+      text-decoration: none;
+      color: var(--color-secundario);
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+
+    .enlace-oficial:hover {
+      border-color: var(--color-secundario);
+      background: #f0f5fa;
+    }
+
+    .confetti-final {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 100;
+      overflow: hidden;
+    }
+
+    .confetti-final__pieza {
+      position: absolute;
+      top: -10px;
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      animation: confettiCae 3s ease-out forwards;
+    }
+
+    @keyframes confettiCae {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div id="barra-progreso"></div>
+
+  <button class="acc-boton" aria-label="Opciones de accesibilidad" title="Accesibilidad">♿</button>
+  <div class="acc-panel" role="dialog" aria-label="Panel de accesibilidad">
+    <div class="acc-panel__titulo">Accesibilidad</div>
+    <button class="acc-panel__opcion" data-acc="voz"><span class="acc-panel__icono">🔊</span> Narración por voz</button>
+    <button class="acc-panel__opcion" data-acc="lectura_facil"><span class="acc-panel__icono">📖</span> Lectura fácil</button>
+    <button class="acc-panel__opcion" data-acc="alto_contraste"><span class="acc-panel__icono">🌗</span> Alto contraste</button>
+  </div>
+  <div class="voz-controles" aria-label="Controles de narración">
+    <button class="voz-controles__btn voz-btn-pausar" aria-label="Pausar" title="Pausar">⏸️</button>
+    <button class="voz-controles__btn voz-btn-repetir" aria-label="Repetir" title="Repetir">🔁</button>
+    <button class="voz-controles__btn voz-btn-detener" aria-label="Detener" title="Detener">⏹️</button>
+  </div>
+
+  <div class="confetti-final" id="confetti-final"></div>
+
+  <main class="pantalla">
+    <div class="contenido-principal">
+      <!-- A) Felicitación -->
+      <section class="celebracion mb-2">
+        <span class="celebracion__emoji">🎉</span>
+        <h1 class="celebracion__titulo" id="titulo-felicitacion">¡Ya votaste!</h1>
+        <p id="mensaje-felicitacion"
+           data-texto-normal="" data-texto-facil=""></p>
+      </section>
+
+      <!-- B) Tarjeta cívica -->
+      <section class="mb-3">
+        <div id="tarjeta-civica-contenedor"></div>
+      </section>
+
+      <!-- Compartir -->
+      <section class="mb-3 text-center">
+        <h2 class="mb-1">Comparte con tus amigos</h2>
+        <div class="compartir">
+          <button class="btn btn--whatsapp" id="btn-whatsapp">📱 WhatsApp</button>
+          <button class="btn btn--x" id="btn-x">𝕏 Compartir</button>
+        </div>
+      </section>
+
+      <!-- C) Datos de Chihuahua -->
+      <section class="mb-3">
+        <hr class="separador">
+        <h2 class="mb-1">Datos sobre participación juvenil en Chihuahua</h2>
+        <div class="datos-grid" id="datos-chihuahua"></div>
+      </section>
+
+      <!-- D) Enlaces oficiales -->
+      <section class="mb-3">
+        <hr class="separador">
+        <h2 class="mb-1">Información oficial</h2>
+        <div class="enlaces-oficiales" id="enlaces-oficiales"></div>
+      </section>
+
+      <button class="btn btn--secundario btn--grande mt-2" onclick="window.location.href='index.html'">
+        🔄 Volver a empezar
+      </button>
+    </div>
+  </main>
+
+  <script src="js/navegacion.js"></script>
+  <script src="js/accesibilidad.js"></script>
+  <script src="js/tarjeta.js"></script>
+  <script>
+    renderBarraProgreso(5, document.getElementById('barra-progreso'));
+
+    var nombre = obtenerNombre();
+
+    // Confetti de celebración
+    (function() {
+      var contenedor = document.getElementById('confetti-final');
+      var colores = ['#8B0000', '#f0a500', '#1a3a5c', '#2e7d32', '#e65100'];
+      for (var i = 0; i < 60; i++) {
+        var pieza = document.createElement('div');
+        pieza.className = 'confetti-final__pieza';
+        pieza.style.left = Math.random() * 100 + '%';
+        pieza.style.backgroundColor = colores[Math.floor(Math.random() * colores.length)];
+        pieza.style.animationDelay = Math.random() * 1 + 's';
+        pieza.style.animationDuration = (2 + Math.random() * 2) + 's';
+        contenedor.appendChild(pieza);
+      }
+    })();
+
+    cargarContenido().then(function(data) {
+      var p5 = data.pantallas.p5;
+
+      // Felicitación
+      var msgEl = document.getElementById('mensaje-felicitacion');
+      var msgNormal = p5.mensaje_felicitacion.replace('{nombre}', nombre);
+      var msgFacil = p5.mensaje_felicitacion_facil.replace('{nombre}', nombre);
+      msgEl.textContent = msgNormal;
+      msgEl.setAttribute('data-texto-normal', msgNormal);
+      msgEl.setAttribute('data-texto-facil', msgFacil);
+
+      // Tarjeta cívica
+      generarTarjetaCivica(nombre, 2, 2, document.getElementById('tarjeta-civica-contenedor'));
+
+      // Compartir
+      var textoCompartir = p5.texto_compartir.replace('{url}', data.proyecto.url);
+      document.getElementById('btn-whatsapp').addEventListener('click', function() {
+        compartirWhatsApp(textoCompartir);
+      });
+      document.getElementById('btn-x').addEventListener('click', function() {
+        compartirX(textoCompartir);
+      });
+
+      // Datos Chihuahua
+      var datosEl = document.getElementById('datos-chihuahua');
+      p5.datos_chihuahua.forEach(function(d, i) {
+        var div = document.createElement('div');
+        div.className = 'dato-item';
+        div.innerHTML =
+          '<span class="dato-item__numero">' + (i + 1) + '</span>' +
+          '<p class="dato-item__texto" data-texto-normal="' + d.dato + '" data-texto-facil="' + d.dato_facil + '">' + d.dato + '</p>';
+        datosEl.appendChild(div);
+      });
+
+      // Enlaces
+      var enlacesEl = document.getElementById('enlaces-oficiales');
+      var enlaces = p5.enlaces;
+      Object.keys(enlaces).forEach(function(key) {
+        var e = enlaces[key];
+        var a = document.createElement('a');
+        a.className = 'enlace-oficial';
+        a.href = e.url;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.innerHTML = '🔗 ' + e.nombre;
+        enlacesEl.appendChild(a);
+      });
+    });
+  </script>
+</body>
+</html>
