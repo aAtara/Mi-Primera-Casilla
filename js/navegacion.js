@@ -15,30 +15,35 @@ function irAPantalla(archivo) {
   window.location.replace(archivo);
 }
 
-// Bloquear retroceso del navegador (botón atrás, doble clic, gestos)
+// Bloquear retroceso del navegador
 (function() {
-  // Llenar historial para que no haya a dónde regresar
-  for (var i = 0; i < 3; i++) {
-    history.pushState(null, '', location.href);
+  // Llenar historial con muchas entradas
+  for (var i = 0; i < 50; i++) {
+    history.pushState({ bloqueado: true }, '', location.href);
   }
-  window.addEventListener('popstate', function() {
-    history.pushState(null, '', location.href);
+
+  // Cada vez que intenten retroceder, volver a empujar
+  window.addEventListener('popstate', function(e) {
+    history.pushState({ bloqueado: true }, '', location.href);
   });
 
-  // Bloquear botón de retroceso del ratón (botón 3)
+  // Bloquear botones laterales del ratón (3 = atrás, 4 = adelante)
   window.addEventListener('mouseup', function(e) {
-    if (e.button === 3) {
+    if (e.button === 3 || e.button === 4) {
       e.preventDefault();
       e.stopPropagation();
+      return false;
     }
   }, true);
 
-  // Bloquear Alt+Izquierda y Backspace para atrás
+  // Bloquear Alt+Izquierda, Backspace, y cualquier gesto de retroceso
   window.addEventListener('keydown', function(e) {
-    if ((e.altKey && e.key === 'ArrowLeft') || (e.key === 'Backspace' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA')) {
+    if ((e.altKey && e.key === 'ArrowLeft') || (e.key === 'Backspace' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') || (e.key === 'BrowserBack')) {
       e.preventDefault();
+      e.stopPropagation();
+      return false;
     }
-  });
+  }, true);
 })();
 
 function renderBarraProgreso(pasoActual, contenedor) {
