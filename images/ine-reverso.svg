@@ -1,73 +1,86 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 270" fill="none">
   <!-- Tarjeta base -->
-  <rect x="10" y="10" width="380" height="230" rx="14" fill="#f7f5f0" stroke="#c5c0b6" stroke-width="2"/>
+  <rect x="5" y="5" width="430" height="260" rx="12" fill="#f9f7f3" stroke="#c5c0b6" stroke-width="1.5"/>
 
-  <!-- Header rosa INE -->
-  <rect x="10" y="10" width="380" height="40" rx="14" fill="#d4a5a5"/>
-  <rect x="10" y="36" width="380" height="14" fill="#d4a5a5"/>
-  <text x="200" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#fff" letter-spacing="1">INSTITUTO NACIONAL ELECTORAL</text>
+  <!-- Header verde INE -->
+  <rect x="5" y="5" width="430" height="36" rx="12" fill="#2e5939"/>
+  <rect x="5" y="28" width="430" height="13" fill="#2e5939"/>
 
-  <!-- Líneas de datos simulados -->
-  <rect x="30" y="65" width="120" height="8" rx="4" fill="#d4d0c8"/>
-  <rect x="30" y="82" width="90" height="8" rx="4" fill="#d4d0c8"/>
+  <!-- Escudo y texto header -->
+  <circle cx="32" cy="23" r="12" fill="#c8a84e" opacity="0.7"/>
+  <text x="52" y="18" font-family="Arial, sans-serif" font-size="7" fill="#e8dfc8" letter-spacing="0.5">MÉXICO</text>
+  <text x="120" y="18" font-family="Arial, sans-serif" font-size="8.5" font-weight="700" fill="#fff" letter-spacing="0.5">INSTITUTO NACIONAL ELECTORAL</text>
+  <text x="120" y="30" font-family="Arial, sans-serif" font-size="7" fill="#c8dfc8" letter-spacing="1">CREDENCIAL PARA VOTAR</text>
 
-  <!-- CURP simulado -->
-  <text x="30" y="112" font-family="Arial, sans-serif" font-size="9" fill="#888">CURP:</text>
-  <rect x="65" y="103" width="160" height="10" rx="3" fill="#d4d0c8"/>
+  <!-- Foto placeholder -->
+  <rect x="20" y="50" width="85" height="105" rx="4" fill="#e0ddd6" stroke="#c5c0b6" stroke-width="1"/>
+  <circle cx="62" cy="82" r="18" fill="#ccc8c0"/>
+  <rect x="42" y="105" width="40" height="30" rx="10" fill="#ccc8c0"/>
 
-  <!-- Código de barras simulado -->
-  <g transform="translate(260, 60)">
-    <rect x="0" y="0" width="2" height="50" fill="#555"/>
-    <rect x="5" y="0" width="1" height="50" fill="#555"/>
-    <rect x="9" y="0" width="3" height="50" fill="#555"/>
-    <rect x="15" y="0" width="1" height="50" fill="#555"/>
-    <rect x="19" y="0" width="2" height="50" fill="#555"/>
-    <rect x="24" y="0" width="1" height="50" fill="#555"/>
-    <rect x="28" y="0" width="3" height="50" fill="#555"/>
-    <rect x="34" y="0" width="1" height="50" fill="#555"/>
-    <rect x="38" y="0" width="2" height="50" fill="#555"/>
-    <rect x="43" y="0" width="1" height="50" fill="#555"/>
-    <rect x="47" y="0" width="3" height="50" fill="#555"/>
-    <rect x="53" y="0" width="2" height="50" fill="#555"/>
-    <rect x="58" y="0" width="1" height="50" fill="#555"/>
-    <rect x="62" y="0" width="2" height="50" fill="#555"/>
-    <rect x="67" y="0" width="3" height="50" fill="#555"/>
-    <rect x="73" y="0" width="1" height="50" fill="#555"/>
-    <rect x="77" y="0" width="2" height="50" fill="#555"/>
-    <rect x="82" y="0" width="1" height="50" fill="#555"/>
-    <rect x="86" y="0" width="3" height="50" fill="#555"/>
-    <rect x="92" y="0" width="2" height="50" fill="#555"/>
-    <rect x="97" y="0" width="1" height="50" fill="#555"/>
-    <rect x="101" y="0" width="2" height="50" fill="#555"/>
+  <!-- Datos personales -->
+  <text x="118" y="58" font-family="Arial, sans-serif" font-size="6.5" fill="#888">NOMBRE</text>
+  <rect x="118" y="62" width="100" height="7" rx="2" fill="#d8d4cc"/>
+  <rect x="118" y="72" width="80" height="7" rx="2" fill="#d8d4cc"/>
+
+  <text x="118" y="92" font-family="Arial, sans-serif" font-size="6.5" fill="#888">DOMICILIO</text>
+  <rect x="118" y="96" width="150" height="6" rx="2" fill="#d8d4cc"/>
+  <rect x="118" y="105" width="130" height="6" rx="2" fill="#d8d4cc"/>
+
+  <text x="118" y="122" font-family="Arial, sans-serif" font-size="6.5" fill="#888">CLAVE DE ELECTOR</text>
+  <rect x="118" y="126" width="140" height="6" rx="2" fill="#d8d4cc"/>
+
+  <!-- Mapa de México (simplificado) -->
+  <g transform="translate(330, 50)" opacity="0.15">
+    <path d="M10 40 Q15 20 30 15 Q45 10 55 20 Q60 25 70 22 Q75 28 65 35 Q60 45 50 48 Q40 50 35 45 Q25 55 15 50 Q8 48 10 40Z" fill="#2e5939" stroke="#2e5939" stroke-width="1"/>
   </g>
 
-  <!-- Línea de datos inferior -->
-  <rect x="30" y="130" width="200" height="8" rx="4" fill="#d4d0c8"/>
+  <!-- Fila de datos: ESTADO, MUNICIPIO, SECCIÓN -->
+  <line x1="20" y1="145" x2="420" y2="145" stroke="#d4d0c8" stroke-width="0.5"/>
 
-  <!-- SECCIÓN ELECTORAL - DESTACADA -->
-  <rect x="24" y="152" width="165" height="42" rx="8" fill="#FFF3E0" stroke="#E65100" stroke-width="2.5" stroke-dasharray="0"/>
-  <text x="32" y="170" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#888">SECCIÓN</text>
-  <text x="32" y="188" font-family="Arial, sans-serif" font-size="16" font-weight="800" fill="#E65100" letter-spacing="2">1234</text>
-  <text x="95" y="170" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#888">VIGENCIA</text>
-  <text x="95" y="188" font-family="Arial, sans-serif" font-size="11" fill="#aaa">2020-2030</text>
+  <text x="25" y="158" font-family="Arial, sans-serif" font-size="6.5" fill="#888">ESTADO</text>
+  <text x="25" y="170" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#444">09</text>
 
-  <!-- Flecha apuntando a sección -->
-  <path d="M 210 173 L 240 173" stroke="#E65100" stroke-width="2.5" stroke-linecap="round"/>
-  <path d="M 236 167 L 246 173 L 236 179" fill="#E65100"/>
+  <text x="90" y="158" font-family="Arial, sans-serif" font-size="6.5" fill="#888">MUNICIPIO</text>
+  <text x="90" y="170" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#444">004</text>
 
-  <!-- Círculo indicador -->
-  <circle cx="262" cy="173" r="14" fill="#E65100" opacity="0.12"/>
-  <circle cx="262" cy="173" r="14" fill="none" stroke="#E65100" stroke-width="2"/>
-  <text x="262" y="177" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="800" fill="#E65100">!</text>
+  <!-- SECCIÓN DESTACADA -->
+  <rect x="165" y="147" width="80" height="30" rx="6" fill="#FFF3E0" stroke="#E65100" stroke-width="2.5"/>
+  <text x="175" y="158" font-family="Arial, sans-serif" font-size="6.5" font-weight="700" fill="#E65100">SECCIÓN</text>
+  <text x="175" y="171" font-family="Arial, sans-serif" font-size="13" font-weight="800" fill="#E65100" letter-spacing="1">0747</text>
 
-  <!-- Texto indicador -->
-  <text x="284" y="168" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#E65100">Aquí está tu</text>
-  <text x="284" y="182" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#E65100">sección electoral</text>
+  <!-- Flecha y texto indicador -->
+  <path d="M 250 162 L 275 162" stroke="#E65100" stroke-width="2" stroke-linecap="round"/>
+  <path d="M 271 157 L 279 162 L 271 167" fill="#E65100"/>
+  <rect x="283" y="150" width="120" height="26" rx="6" fill="#E65100" opacity="0.1"/>
+  <text x="293" y="163" font-family="Arial, sans-serif" font-size="9" font-weight="700" fill="#E65100">Aquí está tu</text>
+  <text x="293" y="174" font-family="Arial, sans-serif" font-size="9" font-weight="700" fill="#E65100">sección electoral</text>
 
-  <!-- Más datos simulados abajo -->
-  <rect x="30" y="205" width="140" height="7" rx="3" fill="#d4d0c8"/>
-  <rect x="30" y="220" width="100" height="7" rx="3" fill="#d4d0c8"/>
+  <!-- Fila inferior: LOCALIDAD, EMISIÓN, VIGENCIA -->
+  <line x1="20" y1="182" x2="420" y2="182" stroke="#d4d0c8" stroke-width="0.5"/>
 
-  <!-- Etiqueta reverso -->
-  <text x="330" y="225" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#bbb">REVERSO DE LA INE</text>
+  <text x="25" y="194" font-family="Arial, sans-serif" font-size="6.5" fill="#888">LOCALIDAD</text>
+  <rect x="25" y="198" width="60" height="6" rx="2" fill="#d8d4cc"/>
+
+  <text x="140" y="194" font-family="Arial, sans-serif" font-size="6.5" fill="#888">EMISIÓN</text>
+  <text x="140" y="206" font-family="Arial, sans-serif" font-size="9" fill="#999">2024</text>
+
+  <text x="210" y="194" font-family="Arial, sans-serif" font-size="6.5" fill="#888">VIGENCIA</text>
+  <text x="210" y="206" font-family="Arial, sans-serif" font-size="9" fill="#999">2034</text>
+
+  <!-- Firma y huella -->
+  <line x1="20" y1="218" x2="420" y2="218" stroke="#d4d0c8" stroke-width="0.5"/>
+  <rect x="25" y="225" width="90" height="25" rx="3" fill="none" stroke="#d4d0c8" stroke-width="0.5"/>
+  <text x="45" y="241" font-family="Arial, sans-serif" font-size="6" fill="#bbb">FIRMA</text>
+
+  <!-- Huella -->
+  <circle cx="170" cy="238" r="14" fill="none" stroke="#d4d0c8" stroke-width="0.5"/>
+  <text x="170" y="242" text-anchor="middle" font-family="Arial, sans-serif" font-size="5.5" fill="#bbb">HUELLA</text>
+
+  <!-- Código OCR abajo -->
+  <rect x="220" y="225" width="190" height="7" rx="2" fill="#e8e4dc"/>
+  <rect x="220" y="236" width="190" height="7" rx="2" fill="#e8e4dc"/>
+  <rect x="220" y="247" width="150" height="7" rx="2" fill="#e8e4dc"/>
+
+  <!-- Etiqueta -->
+  <text x="380" y="260" text-anchor="end" font-family="Arial, sans-serif" font-size="6.5" fill="#ccc">FRENTE DE LA INE</text>
 </svg>
