@@ -9,243 +9,274 @@
   <link rel="stylesheet" href="styles/componentes.css">
   <link rel="stylesheet" href="styles/accesibilidad.css">
   <style>
-    /* ===== SPLASH SCREEN ===== */
+    /* ===== SPLASH — full-width editorial layout ===== */
     .splash {
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem 1.5rem;
+      width: 100vw;
+      display: grid;
+      grid-template-rows: 1fr auto;
       position: relative;
       overflow: hidden;
-      background: linear-gradient(160deg, #f8f6f1 0%, #f0ebe0 40%, #e8e0d0 100%);
+      background: #f8f6f1;
     }
 
-    /* Círculos decorativos de fondo */
-    .splash::before,
-    .splash::after {
-      content: '';
+    /* Franja diagonal decorativa */
+    .splash__fondo {
       position: absolute;
-      border-radius: 50%;
-      opacity: 0.06;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
       pointer-events: none;
     }
 
-    .splash::before {
-      width: 500px;
-      height: 500px;
+    .splash__fondo::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 70%;
+      height: 160%;
       background: var(--color-primario);
-      top: -200px;
-      right: -150px;
+      transform: skewX(-12deg);
+      opacity: 0.04;
     }
 
-    .splash::after {
-      width: 400px;
-      height: 400px;
-      background: var(--color-secundario);
-      bottom: -180px;
-      left: -120px;
+    .splash__fondo::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, var(--color-primario) 0%, var(--color-primario) 33%, #fff 33%, #fff 66%, var(--color-exito) 66%, var(--color-exito) 100%);
     }
 
-    .splash__contenido {
+    /* Contenido principal — dos columnas en desktop */
+    .splash__cuerpo {
       position: relative;
       z-index: 1;
-      max-width: 520px;
-    }
-
-    /* Badge institucional */
-    .splash__badge {
-      display: inline-flex;
+      display: grid;
+      grid-template-columns: 1fr;
       align-items: center;
-      gap: 0.4rem;
-      background: rgba(26, 58, 92, 0.08);
-      border: 1px solid rgba(26, 58, 92, 0.12);
-      border-radius: 50px;
-      padding: 0.4rem 1rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--color-secundario);
-      letter-spacing: 0.5px;
-      margin-bottom: 2rem;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+      gap: 2.5rem;
+    }
+
+    @media (min-width: 720px) {
+      .splash__cuerpo {
+        grid-template-columns: 1fr 1fr;
+        padding: 4rem 3rem;
+        gap: 4rem;
+      }
+    }
+
+    /* Columna izquierda: texto */
+    .splash__texto {
       opacity: 0;
-      animation: fadeUp 0.6s ease 0.2s forwards;
+      animation: entradaIzq 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
     }
 
-    .splash__badge-dot {
-      width: 6px;
-      height: 6px;
-      background: var(--color-exito);
-      border-radius: 50%;
-      animation: pulse-dot 2s ease infinite;
+    @keyframes entradaIzq {
+      from { opacity: 0; transform: translateX(-30px); }
+      to   { opacity: 1; transform: translateX(0); }
     }
 
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(1.4); }
+    .splash__etiqueta {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--color-primario);
+      margin-bottom: 1.2rem;
+      position: relative;
+      padding-left: 24px;
     }
 
-    /* Título principal */
+    .splash__etiqueta::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 2px;
+      background: var(--color-primario);
+    }
+
     .splash__titulo {
       font-family: var(--font-display);
-      font-size: clamp(2.2rem, 7vw, 3.2rem);
+      font-size: clamp(2.4rem, 6vw, 3.6rem);
       font-weight: 900;
+      line-height: 1.05;
       color: var(--color-secundario);
-      line-height: 1.1;
-      margin-bottom: 0.5rem;
-      opacity: 0;
-      animation: fadeUp 0.7s ease 0.35s forwards;
+      margin-bottom: 1.2rem;
     }
 
-    .splash__titulo span {
+    .splash__titulo em {
+      font-style: normal;
       color: var(--color-primario);
+      position: relative;
     }
 
-    /* Subtítulo */
-    .splash__subtitulo {
-      font-size: 1.1rem;
-      color: #666;
-      font-weight: 400;
-      max-width: 400px;
-      margin: 0 auto 2.5rem;
-      opacity: 0;
-      animation: fadeUp 0.7s ease 0.5s forwards;
+    .splash__titulo em::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: var(--color-primario);
+      opacity: 0.15;
+      border-radius: 3px;
     }
 
-    /* Pasos preview */
-    .splash__pasos {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      margin-bottom: 2.5rem;
-      text-align: left;
-      opacity: 0;
-      animation: fadeUp 0.7s ease 0.65s forwards;
+    .splash__desc {
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: #555;
+      margin-bottom: 2rem;
+      max-width: 440px;
     }
 
-    .splash__paso {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      padding: 0.75rem 1rem;
-      background: #fff;
-      border-radius: var(--radio-borde);
-      border: 1px solid rgba(0,0,0,0.06);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-      transition: transform 0.2s ease;
-    }
-
-    .splash__paso:hover {
-      transform: translateX(4px);
-    }
-
-    .splash__paso-num {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 0.85rem;
-      flex-shrink: 0;
-    }
-
-    .splash__paso:nth-child(1) .splash__paso-num {
-      background: rgba(139, 0, 0, 0.1);
-      color: var(--color-primario);
-    }
-    .splash__paso:nth-child(2) .splash__paso-num {
-      background: rgba(26, 58, 92, 0.1);
-      color: var(--color-secundario);
-    }
-    .splash__paso:nth-child(3) .splash__paso-num {
-      background: rgba(46, 125, 50, 0.1);
-      color: var(--color-exito);
-    }
-
-    .splash__paso-texto {
-      font-size: 0.92rem;
-      color: #444;
-      font-weight: 500;
-    }
-
-    .splash__paso-texto strong {
-      color: var(--color-secundario);
-    }
-
-    /* Botón principal */
     .splash__btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.6rem;
       background: var(--color-primario);
       color: #fff;
       border: none;
-      padding: 1rem 2.5rem;
-      font-size: 1.1rem;
+      padding: 0.95rem 2.2rem;
+      font-size: 1rem;
       font-weight: 700;
       font-family: var(--font-display);
-      border-radius: 50px;
+      border-radius: 8px;
       cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 20px rgba(139, 0, 0, 0.3);
-      opacity: 0;
-      animation: fadeUp 0.7s ease 0.8s forwards;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 16px rgba(139, 0, 0, 0.25);
     }
 
     .splash__btn:hover {
       background: #a00000;
       transform: translateY(-2px);
-      box-shadow: 0 6px 28px rgba(139, 0, 0, 0.4);
+      box-shadow: 0 8px 28px rgba(139, 0, 0, 0.35);
     }
 
     .splash__btn:active {
       transform: translateY(0);
     }
 
-    .splash__btn-flecha {
-      transition: transform 0.3s ease;
+    .splash__btn svg {
+      width: 18px;
+      height: 18px;
+      transition: transform 0.25s ease;
     }
 
-    .splash__btn:hover .splash__btn-flecha {
-      transform: translateX(4px);
+    .splash__btn:hover svg {
+      transform: translateX(3px);
     }
 
-    /* Footer del splash */
-    .splash__footer {
-      margin-top: 2.5rem;
+    /* Columna derecha: tarjetas de pasos */
+    .splash__visual {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      opacity: 0;
+      animation: entradaDer 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+    }
+
+    @keyframes entradaDer {
+      from { opacity: 0; transform: translateX(30px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    .paso-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: #fff;
+      padding: 1.25rem 1.3rem;
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .paso-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+
+    .paso-card__num {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .paso-card:nth-child(1) .paso-card__num {
+      background: rgba(139, 0, 0, 0.08);
+      color: var(--color-primario);
+    }
+    .paso-card:nth-child(2) .paso-card__num {
+      background: rgba(26, 58, 92, 0.08);
+      color: var(--color-secundario);
+    }
+    .paso-card:nth-child(3) .paso-card__num {
+      background: rgba(46, 125, 50, 0.08);
+      color: var(--color-exito);
+    }
+
+    .paso-card__info h3 {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--color-secundario);
+      margin-bottom: 0.2rem;
+    }
+
+    .paso-card__info p {
+      font-size: 0.85rem;
+      color: #777;
+      margin: 0;
+      line-height: 1.45;
+    }
+
+    /* Footer sticky abajo del splash */
+    .splash__pie {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 1rem 1.5rem 1.5rem;
       font-size: 0.78rem;
       color: #aaa;
       opacity: 0;
-      animation: fadeUp 0.7s ease 0.95s forwards;
+      animation: fadeIn2 0.6s ease 1s forwards;
     }
 
-    .splash__footer a {
+    .splash__pie a {
       color: var(--color-secundario);
       text-decoration: none;
       font-weight: 600;
     }
 
-    .splash__footer a:hover {
+    .splash__pie a:hover {
       text-decoration: underline;
     }
 
-    /* Línea decorativa */
-    .splash__linea {
-      width: 50px;
-      height: 4px;
-      background: var(--color-primario);
-      border-radius: 2px;
-      margin: 0 auto 1rem;
-      opacity: 0;
-      animation: fadeUp 0.7s ease 0.3s forwards;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes fadeIn2 {
+      from { opacity: 0; }
+      to   { opacity: 1; }
     }
 
     /* ===== FORMULARIO (oculto inicialmente) ===== */
@@ -341,38 +372,53 @@
       background: #000;
     }
 
+    body.alto-contraste .splash__fondo::before {
+      opacity: 0.08;
+      background: #fff;
+    }
+
+    body.alto-contraste .splash__fondo::after {
+      background: linear-gradient(90deg, #ff4444 0%, #ff4444 33%, #333 33%, #333 66%, #44cc44 66%, #44cc44 100%);
+    }
+
+    body.alto-contraste .splash__etiqueta {
+      color: #ff6666;
+    }
+
+    body.alto-contraste .splash__etiqueta::before {
+      background: #ff6666;
+    }
+
     body.alto-contraste .splash__titulo {
       color: #66bbff;
     }
 
-    body.alto-contraste .splash__titulo span {
+    body.alto-contraste .splash__titulo em {
       color: #ff4444;
     }
 
-    body.alto-contraste .splash__subtitulo {
+    body.alto-contraste .splash__desc {
       color: #ccc;
-    }
-
-    body.alto-contraste .splash__paso {
-      background: #111;
-      border-color: #444;
-    }
-
-    body.alto-contraste .splash__paso-texto {
-      color: #ddd;
     }
 
     body.alto-contraste .splash__btn {
       background: #ff4444;
     }
 
-    body.alto-contraste .splash__badge {
-      background: rgba(102, 187, 255, 0.15);
-      border-color: rgba(102, 187, 255, 0.3);
-      color: #66bbff;
+    body.alto-contraste .paso-card {
+      background: #111;
+      border-color: #333;
     }
 
-    body.alto-contraste .splash__footer {
+    body.alto-contraste .paso-card__info h3 {
+      color: #eee;
+    }
+
+    body.alto-contraste .paso-card__info p {
+      color: #aaa;
+    }
+
+    body.alto-contraste .splash__pie {
       color: #888;
     }
   </style>
@@ -404,44 +450,51 @@
 
   <!-- ====== SPLASH SCREEN ====== -->
   <section class="splash" id="splash">
-    <div class="splash__contenido">
-      <div class="splash__badge">
-        <span class="splash__badge-dot"></span>
-        Hackathón de Ciberdemocracia 2026
+    <div class="splash__fondo"></div>
+
+    <div class="splash__cuerpo">
+      <!-- Columna izquierda -->
+      <div class="splash__texto">
+        <span class="splash__etiqueta">Simulador electoral</span>
+        <h1 class="splash__titulo">Mi Primera<br><em>Casilla</em></h1>
+        <p class="splash__desc">
+          Practica todo el proceso de votación antes del gran día. Aprende qué llevar, cómo llegar y qué hacer en la casilla — sin presión, a tu ritmo.
+        </p>
+        <button class="splash__btn" id="btn-iniciar">
+          Comenzar
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </button>
       </div>
 
-      <div class="splash__linea"></div>
-
-      <h1 class="splash__titulo">Mi Primera<br><span>Casilla</span></h1>
-
-      <p class="splash__subtitulo">
-        Simulador interactivo para que practiques tu voto antes del gran día. Sin riesgos, sin presión.
-      </p>
-
-      <div class="splash__pasos">
-        <div class="splash__paso">
-          <span class="splash__paso-num">1</span>
-          <span class="splash__paso-texto"><strong>Prepárate</strong> — Qué llevar y cómo encontrar tu casilla</span>
+      <!-- Columna derecha -->
+      <div class="splash__visual">
+        <div class="paso-card">
+          <span class="paso-card__num">1</span>
+          <div class="paso-card__info">
+            <h3>Prepárate</h3>
+            <p>Qué documentos llevar y cómo encontrar tu casilla</p>
+          </div>
         </div>
-        <div class="splash__paso">
-          <span class="splash__paso-num">2</span>
-          <span class="splash__paso-texto"><strong>Practica</strong> — Marca tu boleta, dóblala y deposítala</span>
+        <div class="paso-card">
+          <span class="paso-card__num">2</span>
+          <div class="paso-card__info">
+            <h3>Vota paso a paso</h3>
+            <p>Marca tu boleta, dóblala y deposítala en la urna</p>
+          </div>
         </div>
-        <div class="splash__paso">
-          <span class="splash__paso-num">3</span>
-          <span class="splash__paso-texto"><strong>Aprende</strong> — Conoce todo el proceso electoral</span>
+        <div class="paso-card">
+          <span class="paso-card__num">3</span>
+          <div class="paso-card__info">
+            <h3>Conoce el proceso</h3>
+            <p>Entiende qué pasa antes, durante y después de votar</p>
+          </div>
         </div>
       </div>
+    </div>
 
-      <button class="splash__btn" id="btn-iniciar">
-        Iniciar simulación
-        <span class="splash__btn-flecha">→</span>
-      </button>
-
-      <div class="splash__footer">
-        Un proyecto del <strong>TecNM Campus Delicias</strong> para el<br>
-        <a href="https://www.ieechihuahua.org.mx" target="_blank" rel="noopener">IEE Chihuahua</a>
-      </div>
+    <div class="splash__pie">
+      Un proyecto del <strong>TecNM Campus Delicias</strong> para el
+      <a href="https://www.ieechihuahua.org.mx" target="_blank" rel="noopener">IEE Chihuahua</a>
     </div>
   </section>
 
