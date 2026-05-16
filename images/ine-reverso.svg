@@ -1,86 +1,75 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 270" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" fill="none">
   <!-- Tarjeta base -->
-  <rect x="5" y="5" width="430" height="260" rx="12" fill="#f9f7f3" stroke="#c5c0b6" stroke-width="1.5"/>
+  <rect x="4" y="4" width="472" height="292" rx="10" fill="#eae6df" stroke="#b5b0a6" stroke-width="1.5"/>
 
-  <!-- Header verde INE -->
-  <rect x="5" y="5" width="430" height="36" rx="12" fill="#2e5939"/>
-  <rect x="5" y="28" width="430" height="13" fill="#2e5939"/>
+  <!-- Franja rosa izquierda -->
+  <rect x="4" y="14" width="12" height="272" fill="#c97a8a" rx="0"/>
 
-  <!-- Escudo y texto header -->
-  <circle cx="32" cy="23" r="12" fill="#c8a84e" opacity="0.7"/>
-  <text x="52" y="18" font-family="Arial, sans-serif" font-size="7" fill="#e8dfc8" letter-spacing="0.5">MÉXICO</text>
-  <text x="120" y="18" font-family="Arial, sans-serif" font-size="8.5" font-weight="700" fill="#fff" letter-spacing="0.5">INSTITUTO NACIONAL ELECTORAL</text>
-  <text x="120" y="30" font-family="Arial, sans-serif" font-size="7" fill="#c8dfc8" letter-spacing="1">CREDENCIAL PARA VOTAR</text>
+  <!-- Header -->
+  <circle cx="50" cy="28" r="16" fill="none" stroke="#888" stroke-width="1.2" opacity="0.5"/>
+  <text x="50" y="32" text-anchor="middle" font-family="serif" font-size="8" fill="#888" font-weight="700">MX</text>
+  <text x="74" y="22" font-family="Arial, sans-serif" font-size="9" fill="#555" font-weight="600">MÉXICO</text>
+  <text x="150" y="22" font-family="Arial, sans-serif" font-size="12" font-weight="800" fill="#333" letter-spacing="1.5">INSTITUTO NACIONAL ELECTORAL</text>
+  <text x="150" y="38" font-family="Arial, sans-serif" font-size="8.5" fill="#555" letter-spacing="2" font-weight="600">CREDENCIAL PARA VOTAR</text>
 
   <!-- Foto placeholder -->
-  <rect x="20" y="50" width="85" height="105" rx="4" fill="#e0ddd6" stroke="#c5c0b6" stroke-width="1"/>
-  <circle cx="62" cy="82" r="18" fill="#ccc8c0"/>
-  <rect x="42" y="105" width="40" height="30" rx="10" fill="#ccc8c0"/>
+  <rect x="28" y="55" width="105" height="130" rx="3" fill="#d8d4cb" stroke="#b5b0a6" stroke-width="1"/>
+  <circle cx="80" cy="92" r="22" fill="#c2bdb4"/>
+  <rect x="55" y="118" width="50" height="45" rx="14" fill="#c2bdb4"/>
 
-  <!-- Datos personales -->
-  <text x="118" y="58" font-family="Arial, sans-serif" font-size="6.5" fill="#888">NOMBRE</text>
-  <rect x="118" y="62" width="100" height="7" rx="2" fill="#d8d4cc"/>
-  <rect x="118" y="72" width="80" height="7" rx="2" fill="#d8d4cc"/>
+  <!-- NOMBRE -->
+  <text x="148" y="65" font-family="Arial, sans-serif" font-size="7.5" fill="#888" font-weight="600">NOMBRE</text>
+  <text x="148" y="80" font-family="Arial, sans-serif" font-size="13" fill="#333" font-weight="700">GOMEZ</text>
+  <text x="148" y="96" font-family="Arial, sans-serif" font-size="13" fill="#333" font-weight="700">VELAZQUEZ</text>
+  <text x="148" y="112" font-family="Arial, sans-serif" font-size="13" fill="#333" font-weight="700">MARGARITA</text>
 
-  <text x="118" y="92" font-family="Arial, sans-serif" font-size="6.5" fill="#888">DOMICILIO</text>
-  <rect x="118" y="96" width="150" height="6" rx="2" fill="#d8d4cc"/>
-  <rect x="118" y="105" width="130" height="6" rx="2" fill="#d8d4cc"/>
+  <!-- SEXO -->
+  <text x="410" y="65" font-family="Arial, sans-serif" font-size="7.5" fill="#888" font-weight="600">SEXO</text>
+  <text x="440" y="65" font-family="Arial, sans-serif" font-size="10" fill="#333" font-weight="700">M</text>
 
-  <text x="118" y="122" font-family="Arial, sans-serif" font-size="6.5" fill="#888">CLAVE DE ELECTOR</text>
-  <rect x="118" y="126" width="140" height="6" rx="2" fill="#d8d4cc"/>
+  <!-- DOMICILIO -->
+  <text x="148" y="130" font-family="Arial, sans-serif" font-size="7.5" fill="#c97a8a" font-weight="600">DOMICILIO</text>
+  <text x="148" y="143" font-family="Arial, sans-serif" font-size="9.5" fill="#444">VIADUCTO TLALPAN NO 100</text>
+  <text x="148" y="155" font-family="Arial, sans-serif" font-size="9.5" fill="#444">COL. ARENAL TEPEPAN, ALCALDIA</text>
+  <text x="148" y="167" font-family="Arial, sans-serif" font-size="9.5" fill="#444">TLALPAN. C.P. 14610, CDMX.</text>
 
-  <!-- Mapa de México (simplificado) -->
-  <g transform="translate(330, 50)" opacity="0.15">
-    <path d="M10 40 Q15 20 30 15 Q45 10 55 20 Q60 25 70 22 Q75 28 65 35 Q60 45 50 48 Q40 50 35 45 Q25 55 15 50 Q8 48 10 40Z" fill="#2e5939" stroke="#2e5939" stroke-width="1"/>
-  </g>
+  <!-- Huella derecha -->
+  <rect x="400" y="80" width="60" height="80" rx="4" fill="#d8d4cb" stroke="#b5b0a6" stroke-width="0.8"/>
+  <text x="430" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="6" fill="#aaa">HUELLA</text>
 
-  <!-- Fila de datos: ESTADO, MUNICIPIO, SECCIÓN -->
-  <line x1="20" y1="145" x2="420" y2="145" stroke="#d4d0c8" stroke-width="0.5"/>
+  <!-- CLAVE DE ELECTOR -->
+  <text x="148" y="185" font-family="Arial, sans-serif" font-size="7" fill="#888" font-weight="600">CLAVE DE ELECTOR</text>
+  <text x="280" y="185" font-family="Arial, sans-serif" font-size="10" fill="#333" font-weight="700" letter-spacing="0.5">GMVLMR80070501M100</text>
 
-  <text x="25" y="158" font-family="Arial, sans-serif" font-size="6.5" fill="#888">ESTADO</text>
-  <text x="25" y="170" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#444">09</text>
+  <!-- CURP y AÑO DE REGISTRO -->
+  <text x="148" y="200" font-family="Arial, sans-serif" font-size="7" fill="#c97a8a" font-weight="600">CURP</text>
+  <text x="148" y="213" font-family="Arial, sans-serif" font-size="9.5" fill="#333" font-weight="700">GOVM800705MCLMLR01</text>
+  <text x="350" y="200" font-family="Arial, sans-serif" font-size="7" fill="#888" font-weight="600">AÑO DE REGISTRO</text>
+  <text x="350" y="213" font-family="Arial, sans-serif" font-size="10" fill="#333" font-weight="700">2008 01</text>
 
-  <text x="90" y="158" font-family="Arial, sans-serif" font-size="6.5" fill="#888">MUNICIPIO</text>
-  <text x="90" y="170" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#444">004</text>
+  <!-- Firma -->
+  <text x="40" y="208" font-family="'Brush Script MT', cursive, serif" font-size="18" fill="#444" font-style="italic" transform="rotate(-5, 60, 205)">Margarita</text>
 
-  <!-- SECCIÓN DESTACADA -->
-  <rect x="165" y="147" width="80" height="30" rx="6" fill="#FFF3E0" stroke="#E65100" stroke-width="2.5"/>
-  <text x="175" y="158" font-family="Arial, sans-serif" font-size="6.5" font-weight="700" fill="#E65100">SECCIÓN</text>
-  <text x="175" y="171" font-family="Arial, sans-serif" font-size="13" font-weight="800" fill="#E65100" letter-spacing="1">0747</text>
+  <!-- Línea separadora inferior -->
+  <line x1="28" y1="222" x2="460" y2="222" stroke="#c5c0b6" stroke-width="0.8"/>
 
-  <!-- Flecha y texto indicador -->
-  <path d="M 250 162 L 275 162" stroke="#E65100" stroke-width="2" stroke-linecap="round"/>
-  <path d="M 271 157 L 279 162 L 271 167" fill="#E65100"/>
-  <rect x="283" y="150" width="120" height="26" rx="6" fill="#E65100" opacity="0.1"/>
-  <text x="293" y="163" font-family="Arial, sans-serif" font-size="9" font-weight="700" fill="#E65100">Aquí está tu</text>
-  <text x="293" y="174" font-family="Arial, sans-serif" font-size="9" font-weight="700" fill="#E65100">sección electoral</text>
+  <!-- FECHA DE NACIMIENTO -->
+  <text x="30" y="236" font-family="Arial, sans-serif" font-size="7" fill="#888" font-weight="600">FECHA DE NACIMIENTO</text>
+  <text x="30" y="252" font-family="Arial, sans-serif" font-size="11" fill="#333" font-weight="700">05/07/1980</text>
 
-  <!-- Fila inferior: LOCALIDAD, EMISIÓN, VIGENCIA -->
-  <line x1="20" y1="182" x2="420" y2="182" stroke="#d4d0c8" stroke-width="0.5"/>
+  <!-- SECCIÓN - DESTACADA -->
+  <rect x="193" y="225" width="95" height="40" rx="7" fill="#FFF3E0" stroke="#E65100" stroke-width="2.5"/>
+  <text x="210" y="237" font-family="Arial, sans-serif" font-size="7.5" font-weight="700" fill="#E65100">SECCIÓN</text>
+  <text x="210" y="255" font-family="Arial, sans-serif" font-size="15" font-weight="800" fill="#E65100" letter-spacing="2">0001</text>
 
-  <text x="25" y="194" font-family="Arial, sans-serif" font-size="6.5" fill="#888">LOCALIDAD</text>
-  <rect x="25" y="198" width="60" height="6" rx="2" fill="#d8d4cc"/>
+  <!-- Flecha indicadora -->
+  <path d="M 295 245 L 318 245" stroke="#E65100" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M 314 240 L 322 245 L 314 250" fill="#E65100"/>
+  <rect x="326" y="233" width="130" height="26" rx="6" fill="#E65100" opacity="0.1"/>
+  <text x="338" y="246" font-family="Arial, sans-serif" font-size="9.5" font-weight="700" fill="#E65100">Aquí está tu sección</text>
+  <text x="338" y="258" font-family="Arial, sans-serif" font-size="9.5" font-weight="700" fill="#E65100">electoral</text>
 
-  <text x="140" y="194" font-family="Arial, sans-serif" font-size="6.5" fill="#888">EMISIÓN</text>
-  <text x="140" y="206" font-family="Arial, sans-serif" font-size="9" fill="#999">2024</text>
-
-  <text x="210" y="194" font-family="Arial, sans-serif" font-size="6.5" fill="#888">VIGENCIA</text>
-  <text x="210" y="206" font-family="Arial, sans-serif" font-size="9" fill="#999">2034</text>
-
-  <!-- Firma y huella -->
-  <line x1="20" y1="218" x2="420" y2="218" stroke="#d4d0c8" stroke-width="0.5"/>
-  <rect x="25" y="225" width="90" height="25" rx="3" fill="none" stroke="#d4d0c8" stroke-width="0.5"/>
-  <text x="45" y="241" font-family="Arial, sans-serif" font-size="6" fill="#bbb">FIRMA</text>
-
-  <!-- Huella -->
-  <circle cx="170" cy="238" r="14" fill="none" stroke="#d4d0c8" stroke-width="0.5"/>
-  <text x="170" y="242" text-anchor="middle" font-family="Arial, sans-serif" font-size="5.5" fill="#bbb">HUELLA</text>
-
-  <!-- Código OCR abajo -->
-  <rect x="220" y="225" width="190" height="7" rx="2" fill="#e8e4dc"/>
-  <rect x="220" y="236" width="190" height="7" rx="2" fill="#e8e4dc"/>
-  <rect x="220" y="247" width="150" height="7" rx="2" fill="#e8e4dc"/>
-
-  <!-- Etiqueta -->
-  <text x="380" y="260" text-anchor="end" font-family="Arial, sans-serif" font-size="6.5" fill="#ccc">FRENTE DE LA INE</text>
+  <!-- VIGENCIA (a la derecha de sección, pero debajo de la flecha) -->
+  <text x="30" y="275" font-family="Arial, sans-serif" font-size="7" fill="#888" font-weight="600">VIGENCIA</text>
+  <text x="30" y="288" font-family="Arial, sans-serif" font-size="10" fill="#333" font-weight="700">2019 - 2029</text>
 </svg>
