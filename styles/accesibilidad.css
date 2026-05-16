@@ -103,8 +103,9 @@ body.alto-contraste .quiz__opcion--incorrecta {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 2px solid var(--color-secundario);
-  background: #fff;
+  border: none;
+  padding: 6px;
+  background: var(--color-secundario);
   color: var(--color-secundario);
   font-size: 1.2rem;
   cursor: pointer;
@@ -116,8 +117,9 @@ body.alto-contraste .quiz__opcion--incorrecta {
 }
 
 .acc-boton:hover {
-  background: var(--color-secundario);
+  background: var(--color-primario);
   color: #fff;
+  transform: scale(1.1);
 }
 
 .acc-boton:focus-visible {
@@ -126,9 +128,21 @@ body.alto-contraste .quiz__opcion--incorrecta {
 }
 
 body.alto-contraste .acc-boton {
-  background: #222;
-  border-color: #ffff00;
-  color: #ffff00;
+  background: var(--color-secundario);
+  color: var(--color-primario);
+  transition: all 0.5s ease;
+}
+
+body.alto-contraste .acc-boton:hover {
+  background-color: var(--color-primario);
+  transform: scale(1.1);
+}
+
+.acc-boton img {
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  filter: brightness(0) invert(1);
 }
 
 .acc-panel {

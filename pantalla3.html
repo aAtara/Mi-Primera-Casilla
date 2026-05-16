@@ -41,13 +41,13 @@
       position: relative;
       margin-bottom: 1.5rem;
       opacity: 0;
-      transform: translateX(-30px) scale(0.9);
-      transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transform: translateX(-20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
     }
 
     .timeline__paso--visible {
       opacity: 1;
-      transform: translateX(0) scale(1);
+      transform: translateX(0);
     }
 
     .timeline__dot {
@@ -65,7 +65,7 @@
       font-size: 0.7rem;
       font-weight: 800;
       color: var(--color-borde);
-      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transition: all 0.4s ease;
       z-index: 2;
     }
 
@@ -73,13 +73,6 @@
       background: var(--color-primario);
       border-color: var(--color-primario);
       color: #fff;
-      animation: dotPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    @keyframes dotPop {
-      0% { transform: scale(0); }
-      60% { transform: scale(1.4); }
-      100% { transform: scale(1); }
     }
 
     .timeline__tarjeta {
@@ -96,7 +89,6 @@
     }
 
     .timeline__tarjeta:hover {
-      transform: translateY(-2px);
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
     }
 
@@ -108,25 +100,22 @@
     }
 
     .timeline__icono {
-      font-size: 1.8rem;
-      width: 50px;
-      height: 50px;
+      font-size: 1.5rem;
+      width: 40px;
+      height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #f0f5fa 0%, #e3edf7 100%);
-      border-radius: 50%;
+      background: none;
       flex-shrink: 0;
+      opacity: 0;
+      transition: opacity 0.4s ease 0.2s;
     }
 
     .timeline__paso--visible .timeline__icono {
-      animation: iconoEntrada 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+      opacity: 1;
     }
 
-    @keyframes iconoEntrada {
-      0% { transform: rotate(-180deg) scale(0); }
-      100% { transform: rotate(0deg) scale(1); }
-    }
 
     .timeline__titulo {
       font-weight: 800;
@@ -213,16 +202,14 @@
       transform: translateX(4px);
     }
 
-    /* === Secciones animadas === */
+    /* === Secciones animadas (solo fade) === */
     .seccion-animada {
       opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transition: opacity 0.6s ease;
     }
 
     .seccion-animada--visible {
       opacity: 1;
-      transform: translateY(0);
     }
 
     /* === Dato curioso con pulso === */
@@ -252,7 +239,9 @@
 <body>
   <div id="barra-progreso"></div>
 
-  <button class="acc-boton" aria-label="Opciones de accesibilidad" title="Accesibilidad">♿</button>
+  <button class="acc-boton" aria-label="Opciones de accesibilidad" title="Accesibilidad">
+     <img src="images/wheelchair-solid-full.svg" alt="ICONO">
+  </button>
   <div class="acc-panel" role="dialog" aria-label="Panel de accesibilidad">
     <div class="acc-panel__titulo">Accesibilidad</div>
     <button class="acc-panel__opcion" data-acc="voz"><span class="acc-panel__icono">🔊</span> Narración por voz</button>
@@ -274,7 +263,7 @@
       </section>
 
       <!-- A) Timeline de pasos -->
-      <section class="mb-3 seccion-animada" id="seccion-pasos">
+      <section class="mb-3" id="seccion-pasos">
         <h2 class="mb-2">¿Qué pasa cuando llegas?</h2>
         <div class="timeline" id="timeline">
           <div class="timeline__linea-progreso" id="timeline-progreso"></div>
@@ -294,8 +283,8 @@
       </section>
 
       <!-- Dato curioso -->
-      <div class="tarjeta tarjeta--destacada mb-3 dato-card seccion-animada" id="dato-curioso-p3">
-        <strong>💡 Dato curioso</strong>
+      <div class="tarjeta tarjeta--destacada dato-lateral dato-lateral--der mb-3 dato-card seccion-animada" id="dato-curioso-p3">
+        <strong>Dato curioso</strong>
         <p class="mt-1" id="dato-p3-texto"
            data-texto-normal="" data-texto-facil=""></p>
       </div>
@@ -312,7 +301,7 @@
   <script>
     renderBarraProgreso(3, document.getElementById('barra-progreso'));
 
-    // Scroll reveal
+    // Scroll reveal para secciones (solo fade, sin desplazamiento)
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
@@ -333,6 +322,8 @@
       var progreso = document.getElementById('timeline-progreso');
       var totalPasos = p3.pasos_llegada.length;
 
+      // Agregar todos los items al DOM primero
+      var pasoDivs = [];
       p3.pasos_llegada.forEach(function(paso, i) {
         var div = document.createElement('div');
         div.className = 'timeline__paso';
@@ -346,12 +337,15 @@
             '<p class="timeline__texto" data-texto-normal="' + paso.texto + '" data-texto-facil="' + paso.texto_facil + '">' + paso.texto + '</p>' +
           '</div>';
         timelineEl.appendChild(div);
+        pasoDivs.push(div);
+      });
 
+      // Animar entrada escalonada
+      pasoDivs.forEach(function(div, i) {
         setTimeout(function() {
           div.classList.add('timeline__paso--visible');
-          var pct = ((i + 1) / totalPasos) * 100;
-          progreso.style.height = pct + '%';
-        }, 500 * (i + 1));
+          progreso.style.height = (((i + 1) / totalPasos) * 100) + '%';
+        }, 400 * (i + 1));
       });
 
       // Diálogo con typing indicator
@@ -390,12 +384,11 @@
         burbuja.className = 'dialogo__burbuja ' +
           (esFuncionario ? 'dialogo__burbuja--funcionario' : 'dialogo__burbuja--tu');
 
-        var etiqueta = esFuncionario ? '👤 Funcionario' : '🙋 Tú';
+        var etiqueta = esFuncionario ? 'Funcionario' : 'Tú';
         var texto = usaFacil() ? msg.texto_facil : msg.texto;
 
         burbuja.innerHTML = '<div class="dialogo__etiqueta">' + etiqueta + '</div>' + texto;
         dialogoEl.appendChild(burbuja);
-        burbuja.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
         dialogoIdx++;
         animando = false;
@@ -418,6 +411,7 @@
       datoEl.textContent = p3.dato_curioso;
       datoEl.setAttribute('data-texto-normal', p3.dato_curioso);
       datoEl.setAttribute('data-texto-facil', p3.dato_curioso_facil);
+
     });
   </script>
 </body>

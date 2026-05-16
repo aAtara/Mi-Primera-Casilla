@@ -60,7 +60,9 @@
   <div id="barra-progreso"></div>
 
   <!-- Botón de accesibilidad -->
-  <button class="acc-boton" aria-label="Opciones de accesibilidad" title="Accesibilidad">♿</button>
+  <button class="acc-boton" aria-label="Opciones de accesibilidad" title="Accesibilidad">
+     <img src="images/wheelchair-solid-full.svg" alt="ICONO">
+  </button>
   <div class="acc-panel" role="dialog" aria-label="Panel de accesibilidad">
     <div class="acc-panel__titulo">Accesibilidad</div>
     <button class="acc-panel__opcion" data-acc="voz">
@@ -100,6 +102,7 @@
           <input class="campo__input" type="text" id="input-nombre" placeholder="Tu nombre" maxlength="50" required autofocus>
           <span class="campo__nota">Solo para personalizar tu experiencia. No se guarda ni se envía.</span>
           <span class="campo__error" id="error-nombre" style="display:none">Por favor, escribe tu nombre para continuar.</span>
+          <span class="campo__error" id="error-nombre-char" style="display:none">Los caracteres númericos y los simbolos no están permitidos.</span>
         </div>
 
         <div class="campo">
@@ -107,6 +110,7 @@
           <input class="campo__input" type="text" id="input-seccion" placeholder="Ej. 1234" maxlength="6" inputmode="numeric" pattern="[0-9]*" required>
           <span class="campo__nota">Está en la parte trasera de tu INE. Es solo para la simulación.</span>
           <span class="campo__error" id="error-seccion" style="display:none">Ingresa tu sección electoral para continuar.</span>
+          <span class="campo__error" id="error-seccion-char" style="display:none">Solo se permiten caracteres númericos.</span>
         </div>
 
         <button type="submit" class="btn btn--primario btn--grande mt-2" id="btn-comenzar">
@@ -130,20 +134,45 @@
     var inputNombre = document.getElementById('input-nombre');
     var inputSeccion = document.getElementById('input-seccion');
     var errorNombre = document.getElementById('error-nombre');
+    var errorNombreChar = document.getElementById('error-nombre-char');
     var errorSeccion = document.getElementById('error-seccion');
+    var errorSeccionChar = document.getElementById('error-seccion-char');
 
     inputNombre.addEventListener('input', function(e) {
-      e.target.value = e.target.value.replace(/[^\p{L} ]/gu, '');
       if (inputNombre.value.trim()) {
-        errorNombre.style.display = 'none';
-        inputNombre.classList.remove('campo__input--error');
+        var original = e.target.value;
+        var limpio = original.replace(/[^\p{L} ]/gu, '');
+
+        if (inputNombre.value.trim()) {
+          errorNombreChar.style.display = 'none';
+          errorNombre.style.display = 'none';
+          inputNombre.classList.remove('campo__input--error');
+        }
+
+        if (original !== limpio) {
+          e.target.value = limpio;
+          errorNombreChar.style.display = 'block';
+          inputNombre.classList.add('campo__input--error');
+          inputNombre.focus();
+        }
       }
     });
+
     inputSeccion.addEventListener('input', function(e) {
-      e.target.value = e.target.value.replace(/[^0-9]/g, '');
+      var original = e.target.value;
+      var limpio = original.replace(/[^0-9]/g, '');
+
       if (inputSeccion.value.trim()) {
         errorSeccion.style.display = 'none';
+        errorSeccionChar.style.display = 'none';
         inputSeccion.classList.remove('campo__input--error');
+      }
+
+      if (original !== limpio) {
+        e.target.value = limpio;
+        errorSeccionChar.style.display = 'block';
+        inputSeccion.classList.add('campo__input--error');
+        inputSeccion.focus();
       }
     });
 

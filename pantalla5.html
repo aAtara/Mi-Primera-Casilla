@@ -228,7 +228,9 @@
 <body>
   <div id="barra-progreso"></div>
 
-  <button class="acc-boton" aria-label="Opciones de accesibilidad" title="Accesibilidad">♿</button>
+  <button class="acc-boton" aria-label="Opciones de accesibilidad" title="Accesibilidad">
+     <img src="images/wheelchair-solid-full.svg" alt="ICONO">
+  </button>
   <div class="acc-panel" role="dialog" aria-label="Panel de accesibilidad">
     <div class="acc-panel__titulo">Accesibilidad</div>
     <button class="acc-panel__opcion" data-acc="voz"><span class="acc-panel__icono">🔊</span> Narración por voz</button>
@@ -247,7 +249,7 @@
     <div class="contenido-principal">
       <!-- A) Felicitación -->
       <section class="celebracion mb-2">
-        <span class="celebracion__emoji">🎉</span>
+        <span class="celebracion__emoji">✓</span>
         <h1 class="celebracion__titulo" id="titulo-felicitacion">¡Ya votaste!</h1>
         <p id="mensaje-felicitacion"
            data-texto-normal="" data-texto-facil=""></p>
@@ -262,7 +264,7 @@
       <section class="mb-3 text-center">
         <h2 class="mb-1">Comparte con tus amigos</h2>
         <div class="compartir">
-          <button class="btn btn--whatsapp" id="btn-whatsapp">📱 WhatsApp</button>
+          <button class="btn btn--whatsapp" id="btn-whatsapp">WhatsApp</button>
           <button class="btn btn--x" id="btn-x">𝕏 Compartir</button>
         </div>
       </section>
@@ -282,7 +284,7 @@
       </section>
 
       <button class="btn btn--secundario btn--grande mt-2" onclick="window.location.href='index.html'">
-        🔄 Volver a empezar
+        Volver a empezar
       </button>
     </div>
   </main>
@@ -356,7 +358,7 @@
         a.href = e.url;
         a.target = '_blank';
         a.rel = 'noopener';
-        a.innerHTML = '🔗 ' + e.nombre;
+        a.innerHTML = e.nombre;
         enlacesEl.appendChild(a);
       });
     });

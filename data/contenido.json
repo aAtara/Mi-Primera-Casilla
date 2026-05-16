@@ -48,16 +48,17 @@
         "texto_ayuda_facil": "Busca tu casilla en la página del INE con tu número de sección."
       },
       "quiz": [
+  
   {
     "pregunta": "¿Qué pasa si tu credencial del INE está vencida?",
     "opciones": [
       "No puedes votar",
       "Sí puedes votar si la foto es legible",
-      "Puedes votar solo si pagas una multa en la casilla"
+      "Debes tramitar una nueva primero"
     ],
-    "correcta": 0,
-    "explicacion": "Para poder ejercer el voto, es un requisito indispensable que la credencial esté vigente y que el ciudadano aparezca en la lista nominal de electores.",
-    "explicacion_facil": "Si tu INE ya venció, no podrás votar. Tienes que renovarla antes de las elecciones."
+    "correcta": 1,
+    "explicacion": "El artículo 218 de la LGIPE permite votar con INE vencida siempre que la fotografía y datos sean legibles.",
+    "explicacion_facil": "Sí puedes votar con INE vencida. Solo necesitan ver tu foto."
   },
   {
     "pregunta": "¿A qué hora cierran las casillas?",
@@ -209,6 +210,20 @@
           "color": "#E65100",
           "candidato": "Diego Armando Fierro Mata",
           "logo_letra": "S"
+        },
+        {
+          "nombre": "Partido del Mar",
+          "siglas": "PM",
+          "color": "#00838F",
+          "candidato": "Laura Patricia Meléndez Ruiz",
+          "logo_letra": "M"
+        },
+        {
+          "nombre": "Partido del Maíz",
+          "siglas": "PZ",
+          "color": "#F9A825",
+          "candidato": "Carlos Eduardo Vega Ontiveros",
+          "logo_letra": "Z"
         },
         {
           "nombre": "Candidatura Independiente",
