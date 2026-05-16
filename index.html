@@ -424,30 +424,6 @@
   </style>
 </head>
 <body>
-  <!-- Botón de accesibilidad -->
-  <button class="acc-boton" aria-label="Opciones de accesibilidad" title="Accesibilidad">
-     <img src="images/wheelchair-solid-full.svg" alt="ICONO">
-  </button>
-  <div class="acc-panel" role="dialog" aria-label="Panel de accesibilidad">
-    <div class="acc-panel__titulo">Accesibilidad</div>
-    <button class="acc-panel__opcion" data-acc="voz">
-      <span class="acc-panel__icono">🔊</span> Narración por voz
-    </button>
-    <button class="acc-panel__opcion" data-acc="lectura_facil">
-      <span class="acc-panel__icono">📖</span> Lectura fácil
-    </button>
-    <button class="acc-panel__opcion" data-acc="alto_contraste">
-      <span class="acc-panel__icono">🌗</span> Alto contraste
-    </button>
-  </div>
-
-  <!-- Controles de voz -->
-  <div class="voz-controles" aria-label="Controles de narración">
-    <button class="voz-controles__btn voz-btn-pausar" aria-label="Pausar narración" title="Pausar">⏸️</button>
-    <button class="voz-controles__btn voz-btn-repetir" aria-label="Repetir narración" title="Repetir">🔁</button>
-    <button class="voz-controles__btn voz-btn-detener" aria-label="Detener narración" title="Detener">⏹️</button>
-  </div>
-
   <!-- ====== SPLASH SCREEN ====== -->
   <section class="splash" id="splash">
     <div class="splash__fondo"></div>
@@ -492,14 +468,32 @@
       </div>
     </div>
 
-    <div class="splash__pie">
-      Un proyecto del <strong>TecNM Campus Delicias</strong> para el
-      <a href="https://www.ieechihuahua.org.mx" target="_blank" rel="noopener">IEE Chihuahua</a>
-    </div>
   </section>
 
   <!-- ====== FORMULARIO ====== -->
   <div class="pantalla-form" id="pantalla-form">
+    <!-- Botón de accesibilidad -->
+    <button class="acc-boton" aria-label="Opciones de accesibilidad" title="Accesibilidad">
+       <img src="images/wheelchair-solid-full.svg" alt="ICONO">
+    </button>
+    <div class="acc-panel" role="dialog" aria-label="Panel de accesibilidad">
+      <div class="acc-panel__titulo">Accesibilidad</div>
+      <button class="acc-panel__opcion" data-acc="voz">
+        <span class="acc-panel__icono">🔊</span> Narración por voz
+      </button>
+      <button class="acc-panel__opcion" data-acc="lectura_facil">
+        <span class="acc-panel__icono">📖</span> Lectura fácil
+      </button>
+      <button class="acc-panel__opcion" data-acc="alto_contraste">
+        <span class="acc-panel__icono">🌗</span> Alto contraste
+      </button>
+    </div>
+    <div class="voz-controles" aria-label="Controles de narración">
+      <button class="voz-controles__btn voz-btn-pausar" aria-label="Pausar narración" title="Pausar">⏸️</button>
+      <button class="voz-controles__btn voz-btn-repetir" aria-label="Repetir narración" title="Repetir">🔁</button>
+      <button class="voz-controles__btn voz-btn-detener" aria-label="Detener narración" title="Detener">⏹️</button>
+    </div>
+
     <!-- Barra de progreso -->
     <div id="barra-progreso"></div>
 
