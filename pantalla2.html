@@ -275,10 +275,10 @@
       <section class="mb-3 seccion-animada" id="seccion-mapa">
         <h2 class="mb-1">Encuentra tu casilla</h2>
         <div class="mapa-buscar">
-          <span class="mapa-buscar__label">Ingresa tu sección electoral para localizar tu casilla:</span>
+          <span class="mapa-buscar__label">Tu sección electoral:</span>
           <div class="mapa-buscar__row">
             <input class="campo__input" type="text" id="input-seccion-mapa" placeholder="Ej. 1234"
-              inputmode="numeric" maxlength="6">
+              inputmode="numeric" maxlength="6" readonly style="background:#f5f5f5;cursor:default;opacity:0.8">
             <button class="btn btn--secundario" id="btn-buscar-casilla">Buscar</button>
           </div>
           <div class="mapa-buscar__resultado" id="mapa-resultado">
@@ -364,7 +364,7 @@
       var mapaCasillaTexto = document.getElementById('mapa-casilla-texto');
       var usaFacil = function() { return document.body.classList.contains('lectura-facil'); };
 
-      document.getElementById('btn-buscar-casilla').addEventListener('click', function () {
+      function buscarCasilla() {
         var val = document.getElementById('input-seccion-mapa').value.trim();
         if (val) {
           mapaCasillaTexto.textContent = 'Sección ' + val + ' — Casilla Básica 1';
@@ -375,7 +375,14 @@
           );
           mapaResultado.classList.add('mapa-buscar__resultado--visible');
         }
-      });
+      }
+
+      document.getElementById('btn-buscar-casilla').addEventListener('click', buscarCasilla);
+
+      // Auto-buscar si ya tienen sección de pantalla 1
+      if (document.getElementById('input-seccion-mapa').value.trim()) {
+        buscarCasilla();
+      }
 
       function tomarAlAzar(arreglo, n) {
         var copia = arreglo.slice();
