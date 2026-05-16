@@ -47,7 +47,7 @@ function irAPantalla(archivo) {
 })();
 
 function renderBarraProgreso(pasoActual, contenedor) {
-  fetch('./data/contenido.json')
+  fetch('/data/contenido.json')
     .then(function(r) { return r.json(); })
     .then(function(data) {
       var pasos = data.barra_progreso.pasos;
@@ -70,5 +70,5 @@ function renderBarraProgreso(pasoActual, contenedor) {
 }
 
 function cargarContenido() {
-  return fetch('./data/contenido.json').then(function(r) { return r.json(); });
+  return fetch('/data/contenido.json').then(function(r) { return r.json(); });
 }

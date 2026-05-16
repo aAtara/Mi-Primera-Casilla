@@ -9,7 +9,17 @@
       "Bash(git checkout *)",
       "Bash(git stash *)",
       "Bash(git pull *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(cd \"C:\\\\Users\\\\erike\\\\OneDrive\\\\Desktop\\\\Hackaton\" && ls \"C:\\\\Users\\\\erike\\\\Downloads\\\\Mi-Primera-Casilla2.zip\" 2>/dev/null && echo \"ZIP exists\")",
+      "Bash(mkdir -p \"C:\\\\Users\\\\erike\\\\OneDrive\\\\Desktop\\\\Mi-Primera-Casilla2_extracted\")",
+      "Read(//c/Users/erike/OneDrive/Desktop/**)",
+      "Bash(powershell -Command \"Expand-Archive -Path 'C:\\\\Users\\\\erike\\\\Downloads\\\\Mi-Primera-Casilla2.zip' -DestinationPath '.' -Force\")",
+      "Bash(cp \"C:\\\\Users\\\\erike\\\\OneDrive\\\\Desktop\\\\Mi-Primera-Casilla2_extracted\\\\Mi-Primera-Casilla\\\\images\\\\wheelchair-solid-full.svg\" \"C:\\\\Users\\\\erike\\\\OneDrive\\\\Desktop\\\\Hackaton\\\\images\\\\wheelchair-solid-full.svg\")",
+      "Bash(npx http-server *)",
+      "Bash(node -e \"JSON.parse\\(require\\('fs'\\).readFileSync\\('data/contenido.json','utf8'\\)\\); console.log\\('JSON valid'\\)\")",
+      "Bash(node -e \"var d=JSON.parse\\(require\\('fs'\\).readFileSync\\('data/contenido.json','utf8'\\)\\); console.log\\('Partidos:', d.pantallas.p4.partidos_ficticios.length\\); d.pantallas.p4.partidos_ficticios.forEach\\(function\\(p\\){console.log\\(' -', p.siglas, p.nombre\\)}\\)\")",
+      "Bash(start http://localhost:3000/)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp"
     ]
   }
 }

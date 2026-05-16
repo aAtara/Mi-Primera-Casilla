@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>El gran día — Mi Primera Casilla</title>
-  <link rel="stylesheet" href="styles/main.css">
-  <link rel="stylesheet" href="styles/componentes.css">
-  <link rel="stylesheet" href="styles/accesibilidad.css">
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="../styles/componentes.css">
+  <link rel="stylesheet" href="../styles/accesibilidad.css">
   <style>
     /* === Timeline vertical === */
     .timeline {
@@ -240,7 +240,7 @@
   <div id="barra-progreso"></div>
 
   <button class="acc-boton" aria-label="Opciones de accesibilidad" title="Accesibilidad">
-     <img src="images/wheelchair-solid-full.svg" alt="ICONO">
+     <img src="../images/wheelchair-solid-full.svg" alt="ICONO">
   </button>
   <div class="acc-panel" role="dialog" aria-label="Panel de accesibilidad">
     <div class="acc-panel__titulo">Accesibilidad</div>
@@ -290,14 +290,14 @@
       </div>
 
       <button class="btn btn--primario btn--grande"
-              onclick="irAPantalla('pantalla4.html')">
+              onclick="irAPantalla('/casilla/')">
         Siguiente: En la casilla →
       </button>
     </div>
   </main>
 
-  <script src="js/navegacion.js"></script>
-  <script src="js/accesibilidad.js"></script>
+  <script src="../js/navegacion.js"></script>
+  <script src="../js/accesibilidad.js"></script>
   <script>
     renderBarraProgreso(3, document.getElementById('barra-progreso'));
 
