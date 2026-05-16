@@ -379,10 +379,6 @@
 
       document.getElementById('btn-buscar-casilla').addEventListener('click', buscarCasilla);
 
-      // Auto-buscar si ya tienen sección de pantalla 1
-      if (document.getElementById('input-seccion-mapa').value.trim()) {
-        buscarCasilla();
-      }
 
       function tomarAlAzar(arreglo, n) {
         var copia = arreglo.slice();
