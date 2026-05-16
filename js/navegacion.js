@@ -15,11 +15,31 @@ function irAPantalla(archivo) {
   window.location.replace(archivo);
 }
 
-// Bloquear botón de retroceso del navegador
-history.pushState(null, '', location.href);
-window.addEventListener('popstate', function() {
-  history.pushState(null, '', location.href);
-});
+// Bloquear retroceso del navegador (botón atrás, doble clic, gestos)
+(function() {
+  // Llenar historial para que no haya a dónde regresar
+  for (var i = 0; i < 3; i++) {
+    history.pushState(null, '', location.href);
+  }
+  window.addEventListener('popstate', function() {
+    history.pushState(null, '', location.href);
+  });
+
+  // Bloquear botón de retroceso del ratón (botón 3)
+  window.addEventListener('mouseup', function(e) {
+    if (e.button === 3) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }, true);
+
+  // Bloquear Alt+Izquierda y Backspace para atrás
+  window.addEventListener('keydown', function(e) {
+    if ((e.altKey && e.key === 'ArrowLeft') || (e.key === 'Backspace' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA')) {
+      e.preventDefault();
+    }
+  });
+})();
 
 function renderBarraProgreso(pasoActual, contenedor) {
   fetch('./data/contenido.json')
