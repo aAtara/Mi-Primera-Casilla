@@ -12,8 +12,14 @@ function guardarDatos(nombre, seccion) {
 }
 
 function irAPantalla(archivo) {
-  window.location.href = archivo;
+  window.location.replace(archivo);
 }
+
+// Bloquear botón de retroceso del navegador
+history.pushState(null, '', location.href);
+window.addEventListener('popstate', function() {
+  history.pushState(null, '', location.href);
+});
 
 function renderBarraProgreso(pasoActual, contenedor) {
   fetch('./data/contenido.json')
