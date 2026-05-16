@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" fill="none">
+  <!-- Tarjeta base -->
+  <rect x="10" y="10" width="380" height="230" rx="14" fill="#f7f5f0" stroke="#c5c0b6" stroke-width="2"/>
+
+  <!-- Header rosa INE -->
+  <rect x="10" y="10" width="380" height="40" rx="14" fill="#d4a5a5"/>
+  <rect x="10" y="36" width="380" height="14" fill="#d4a5a5"/>
+  <text x="200" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#fff" letter-spacing="1">INSTITUTO NACIONAL ELECTORAL</text>
+
+  <!-- Líneas de datos simulados -->
+  <rect x="30" y="65" width="120" height="8" rx="4" fill="#d4d0c8"/>
+  <rect x="30" y="82" width="90" height="8" rx="4" fill="#d4d0c8"/>
+
+  <!-- CURP simulado -->
+  <text x="30" y="112" font-family="Arial, sans-serif" font-size="9" fill="#888">CURP:</text>
+  <rect x="65" y="103" width="160" height="10" rx="3" fill="#d4d0c8"/>
+
+  <!-- Código de barras simulado -->
+  <g transform="translate(260, 60)">
+    <rect x="0" y="0" width="2" height="50" fill="#555"/>
+    <rect x="5" y="0" width="1" height="50" fill="#555"/>
+    <rect x="9" y="0" width="3" height="50" fill="#555"/>
+    <rect x="15" y="0" width="1" height="50" fill="#555"/>
+    <rect x="19" y="0" width="2" height="50" fill="#555"/>
+    <rect x="24" y="0" width="1" height="50" fill="#555"/>
+    <rect x="28" y="0" width="3" height="50" fill="#555"/>
+    <rect x="34" y="0" width="1" height="50" fill="#555"/>
+    <rect x="38" y="0" width="2" height="50" fill="#555"/>
+    <rect x="43" y="0" width="1" height="50" fill="#555"/>
+    <rect x="47" y="0" width="3" height="50" fill="#555"/>
+    <rect x="53" y="0" width="2" height="50" fill="#555"/>
+    <rect x="58" y="0" width="1" height="50" fill="#555"/>
+    <rect x="62" y="0" width="2" height="50" fill="#555"/>
+    <rect x="67" y="0" width="3" height="50" fill="#555"/>
+    <rect x="73" y="0" width="1" height="50" fill="#555"/>
+    <rect x="77" y="0" width="2" height="50" fill="#555"/>
+    <rect x="82" y="0" width="1" height="50" fill="#555"/>
+    <rect x="86" y="0" width="3" height="50" fill="#555"/>
+    <rect x="92" y="0" width="2" height="50" fill="#555"/>
+    <rect x="97" y="0" width="1" height="50" fill="#555"/>
+    <rect x="101" y="0" width="2" height="50" fill="#555"/>
+  </g>
+
+  <!-- Línea de datos inferior -->
+  <rect x="30" y="130" width="200" height="8" rx="4" fill="#d4d0c8"/>
+
+  <!-- SECCIÓN ELECTORAL - DESTACADA -->
+  <rect x="24" y="152" width="165" height="42" rx="8" fill="#FFF3E0" stroke="#E65100" stroke-width="2.5" stroke-dasharray="0"/>
+  <text x="32" y="170" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#888">SECCIÓN</text>
+  <text x="32" y="188" font-family="Arial, sans-serif" font-size="16" font-weight="800" fill="#E65100" letter-spacing="2">1234</text>
+  <text x="95" y="170" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#888">VIGENCIA</text>
+  <text x="95" y="188" font-family="Arial, sans-serif" font-size="11" fill="#aaa">2020-2030</text>
+
+  <!-- Flecha apuntando a sección -->
+  <path d="M 210 173 L 240 173" stroke="#E65100" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M 236 167 L 246 173 L 236 179" fill="#E65100"/>
+
+  <!-- Círculo indicador -->
+  <circle cx="262" cy="173" r="14" fill="#E65100" opacity="0.12"/>
+  <circle cx="262" cy="173" r="14" fill="none" stroke="#E65100" stroke-width="2"/>
+  <text x="262" y="177" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="800" fill="#E65100">!</text>
+
+  <!-- Texto indicador -->
+  <text x="284" y="168" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#E65100">Aquí está tu</text>
+  <text x="284" y="182" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#E65100">sección electoral</text>
+
+  <!-- Más datos simulados abajo -->
+  <rect x="30" y="205" width="140" height="7" rx="3" fill="#d4d0c8"/>
+  <rect x="30" y="220" width="100" height="7" rx="3" fill="#d4d0c8"/>
+
+  <!-- Etiqueta reverso -->
+  <text x="330" y="225" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#bbb">REVERSO DE LA INE</text>
+</svg>

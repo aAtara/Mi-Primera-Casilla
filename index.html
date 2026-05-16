@@ -53,6 +53,40 @@
       color: #999;
       margin-top: 0.15rem;
     }
+
+    .btn-ayuda-ine {
+      background: none;
+      border: none;
+      color: var(--color-secundario);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0.25rem 0;
+      text-decoration: underline;
+      font-family: var(--font-body);
+    }
+
+    .btn-ayuda-ine:hover {
+      color: var(--color-primario);
+    }
+
+    .ine-guia {
+      margin-top: 0.5rem;
+      border-radius: var(--radio-borde);
+      overflow: hidden;
+      animation: guiaEntra 0.3s ease;
+    }
+
+    @keyframes guiaEntra {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .ine-guia__img {
+      width: 100%;
+      max-width: 360px;
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -109,6 +143,10 @@
           <label class="campo__label" for="input-seccion">¿Cuál es tu sección electoral?</label>
           <input class="campo__input" type="text" id="input-seccion" placeholder="Ej. 1234" maxlength="6" inputmode="numeric" pattern="[0-9]*" required>
           <span class="campo__nota">Está en la parte trasera de tu INE. Es solo para la simulación.</span>
+          <button type="button" class="btn-ayuda-ine" id="btn-donde-seccion">¿Dónde la encuentro?</button>
+          <div class="ine-guia" id="ine-guia" style="display:none">
+            <img src="images/ine-reverso.svg" alt="Reverso de la INE mostrando dónde está la sección electoral" class="ine-guia__img">
+          </div>
           <span class="campo__error" id="error-seccion" style="display:none">Ingresa tu sección electoral para continuar.</span>
           <span class="campo__error" id="error-seccion-char" style="display:none">Solo se permiten caracteres númericos.</span>
         </div>
@@ -130,6 +168,14 @@
   <script src="js/accesibilidad.js"></script>
   <script>
     renderBarraProgreso(1, document.getElementById('barra-progreso'));
+
+    // Toggle guía INE
+    document.getElementById('btn-donde-seccion').addEventListener('click', function() {
+      var guia = document.getElementById('ine-guia');
+      var visible = guia.style.display !== 'none';
+      guia.style.display = visible ? 'none' : 'block';
+      this.textContent = visible ? '¿Dónde la encuentro?' : 'Ocultar guía';
+    });
 
     var inputNombre = document.getElementById('input-nombre');
     var inputSeccion = document.getElementById('input-seccion');
